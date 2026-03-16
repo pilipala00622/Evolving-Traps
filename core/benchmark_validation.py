@@ -17,6 +17,7 @@ from core.benchmark_schema import (
     HumanReviewState,
     ValidationStats,
     build_default_review_checks,
+    build_review_role_responsibilities,
     utc_now_iso,
 )
 from core.gene import Individual
@@ -176,6 +177,7 @@ class BenchmarkValidator:
         return HumanReviewState(
             status=status,
             required_checks=checks,
+            role_responsibilities=build_review_role_responsibilities(scenario_type),
             labeled_target_error_type=target_error_type,
             labeled_scenario_type=scenario_type,
         )
@@ -221,4 +223,4 @@ class BenchmarkCalibrator:
 
 def benchmark_item_to_dict(item: BenchmarkItem) -> Dict[str, object]:
     """Helper for JSON export."""
-    return asdict(item)
+    return item.to_dict()

@@ -1,7 +1,9 @@
 __pycache__/
 *.py[cod]
+.DS_Store
 
 evolution_results.json
 evolution_v2_results.json
+demo_outputs/
 
 第一阶段-14个模型-gpt51评测/

@@ -1,0 +1,356 @@
+[
+  {
+    "plan_id": "健康医疗__引用错误__hard__static__iter2",
+    "source_plan_id": "健康医疗__引用错误__hard__static",
+    "iteration": 2,
+    "domain": "健康医疗",
+    "error_type": "引用错误",
+    "complexity_bucket": "hard",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "健康医疗",
+      "target_error_type": "引用错误",
+      "complexity_bucket": "hard",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "引用错误",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "健康医疗__错误拼接__medium__static__iter2",
+    "source_plan_id": "健康医疗__错误拼接__medium__static",
+    "iteration": 2,
+    "domain": "健康医疗",
+    "error_type": "错误拼接",
+    "complexity_bucket": "medium",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "健康医疗",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "medium",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "娱乐休闲__错误拼接__medium__static__iter2",
+    "source_plan_id": "娱乐休闲__错误拼接__medium__static",
+    "iteration": 2,
+    "domain": "娱乐休闲",
+    "error_type": "错误拼接",
+    "complexity_bucket": "medium",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "娱乐休闲",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "medium",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "教育考试__错误拼接__easy__static__iter2",
+    "source_plan_id": "教育考试__错误拼接__easy__static",
+    "iteration": 2,
+    "domain": "教育考试",
+    "error_type": "错误拼接",
+    "complexity_bucket": "easy",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "教育考试",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "easy",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "教育考试__错误拼接__medium__static__iter2",
+    "source_plan_id": "教育考试__错误拼接__medium__static",
+    "iteration": 2,
+    "domain": "教育考试",
+    "error_type": "错误拼接",
+    "complexity_bucket": "medium",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "教育考试",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "medium",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "文化历史__错误拼接__hard__static__iter2",
+    "source_plan_id": "文化历史__错误拼接__hard__static",
+    "iteration": 2,
+    "domain": "文化历史",
+    "error_type": "错误拼接",
+    "complexity_bucket": "hard",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "文化历史",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "hard",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "法律政务__错误拼接__medium__static__iter2",
+    "source_plan_id": "法律政务__错误拼接__medium__static",
+    "iteration": 2,
+    "domain": "法律政务",
+    "error_type": "错误拼接",
+    "complexity_bucket": "medium",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "法律政务",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "medium",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "科技互联网__错误拼接__hard__static__iter2",
+    "source_plan_id": "科技互联网__错误拼接__hard__static",
+    "iteration": 2,
+    "domain": "科技互联网",
+    "error_type": "错误拼接",
+    "complexity_bucket": "hard",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "科技互联网",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "hard",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true,
+      "natural_query_style": "strict"
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25,
+      "min_naturalness": 3.8
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计",
+      "优化 query 模板和上下文写法，避免过强的人工诱导痕迹"
+    ]
+  },
+  {
+    "plan_id": "科技互联网__错误拼接__medium__static__iter2",
+    "source_plan_id": "科技互联网__错误拼接__medium__static",
+    "iteration": 2,
+    "domain": "科技互联网",
+    "error_type": "错误拼接",
+    "complexity_bucket": "medium",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "科技互联网",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "medium",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "经济金融__引用错误__hard__static__iter2",
+    "source_plan_id": "经济金融__引用错误__hard__static",
+    "iteration": 2,
+    "domain": "经济金融",
+    "error_type": "引用错误",
+    "complexity_bucket": "hard",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "经济金融",
+      "target_error_type": "引用错误",
+      "complexity_bucket": "hard",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "引用错误",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "经济金融__限定错误__medium__static__iter2",
+    "source_plan_id": "经济金融__限定错误__medium__static",
+    "iteration": 2,
+    "domain": "经济金融",
+    "error_type": "限定错误",
+    "complexity_bucket": "medium",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "经济金融",
+      "target_error_type": "限定错误",
+      "complexity_bucket": "medium",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "限定错误",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "自然科学__引用错误__hard__static__iter2",
+    "source_plan_id": "自然科学__引用错误__hard__static",
+    "iteration": 2,
+    "domain": "自然科学",
+    "error_type": "引用错误",
+    "complexity_bucket": "hard",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "自然科学",
+      "target_error_type": "引用错误",
+      "complexity_bucket": "hard",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "引用错误",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  },
+  {
+    "plan_id": "自然科学__错误拼接__easy__static__iter2",
+    "source_plan_id": "自然科学__错误拼接__easy__static",
+    "iteration": 2,
+    "domain": "自然科学",
+    "error_type": "错误拼接",
+    "complexity_bucket": "easy",
+    "scenario_type": "static",
+    "synthesis_constraints": {
+      "domain": "自然科学",
+      "target_error_type": "错误拼接",
+      "complexity_bucket": "easy",
+      "target_trigger_strength": "increase",
+      "force_target_error_type": true,
+      "single_error_focus": true
+    },
+    "evaluation_focus": {
+      "target_error_type": "错误拼接",
+      "scenario_type": "static",
+      "require_low_leakage": true,
+      "max_non_target_leakage": 0.25
+    },
+    "update_reason": [
+      "提高该 plan 的目标 error-type 诱导强度，收紧 task synthesis 约束",
+      "减少混合陷阱，按单目标 error-type 重写 context/trap 设计"
+    ]
+  }
+]

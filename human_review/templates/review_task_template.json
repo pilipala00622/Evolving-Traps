@@ -1,0 +1,29 @@
+{
+  "item_id": "",
+  "target_error_type": "",
+  "scenario_type": "static",
+  "query": "",
+  "context_preview": "",
+  "reference_answer": "",
+  "plan_id": "",
+  "plan_summary": {},
+  "auto_signals": {},
+  "required_checks": [],
+  "role_responsibilities": {},
+  "review_result": {
+    "reviewer": "",
+    "decision": "",
+    "confirmed_target_error_type": "",
+    "confirmed_scenario_type": "",
+    "reference_answer_supported": null,
+    "final_state_is_correctly_specified": null,
+    "verifier_design_is_feasible": null,
+    "reward_should_be_verifiable": null,
+    "query_is_natural": null,
+    "time_metadata_correct": null,
+    "is_single_target_error": null,
+    "release_priority": "medium",
+    "issue_tags": [],
+    "notes": ""
+  }
+}

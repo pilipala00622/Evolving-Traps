@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Review Console</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --panel: #fffaf2;
+      --ink: #1f2933;
+      --muted: #6b7280;
+      --line: #d9cdbb;
+      --accent: #14532d;
+      --warn: #9a3412;
+    }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "PingFang SC", sans-serif;
+      background: linear-gradient(180deg, #f6efe3 0%, #efe7d8 100%);
+      color: var(--ink);
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .hero, .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(56, 42, 16, 0.08);
+    }
+    .hero {
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+    }
+    .panel {
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #f8f4ec;
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid #eadfcd;
+      font-size: 13px;
+    }
+    .tag {
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e9f7ee;
+      color: var(--accent);
+      font-size: 12px;
+      border: 1px solid #b8dcc3;
+    }
+    .warn {
+      color: var(--warn);
+    }
+    .list {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.7;
+    }
+    .filebox {
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px dashed var(--line);
+      background: #fbf8f1;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Human Review Console</h1>
+      <p>这个 HTML 页是给审核员和项目负责人看的静态辅助面板。它不直接写回数据，而是把审核规则、目录约定和字段要求放在一个可浏览的界面里，方便和 JSONL 审核任务一起使用。</p>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>审核规则</h2>
+        <div class="tag">目标错误类型</div>
+        <div class="tag">reference answer</div>
+        <div class="tag">final_state</div>
+        <div class="tag">verifier feasibility</div>
+        <div class="tag">query naturalness</div>
+        <div class="tag">time metadata</div>
+        <ul class="list">
+          <li>必须确认目标 error-type 是否主导，而不是混合错误。</li>
+          <li>必须确认标答和后续 final state 所依赖的信息都来自 context。</li>
+          <li>必须确认该题可以被程序 verifier 检查，而不是只能靠模糊主观判断。</li>
+          <li>时间型题必须检查 `knowledge_cutoff`、`context_timestamp` 和 paired 对照关系。</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>目录约定</h2>
+        <div class="filebox">
+          <pre>human_review/
+docs/
+  REVIEW_RULES.md
+  REVIEW_SOP.md
+  REVIEW_DATA_SPEC.md
+templates/
+  review_app.html
+  review_task_template.json
+data/
+  tasks/
+  reviews/
+  releases/</pre>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>推荐命令</h2>
+        <pre>python3 -m human_review.cli export \
+  --input benchmark_candidates.json \
+  --output human_review/data/tasks/benchmark_review_tasks.jsonl
+
+python3 -m human_review.cli merge \
+  --input benchmark_candidates.json \
+  --reviews human_review/data/reviews/benchmark_review_tasks.reviewed.jsonl \
+  --output human_review/data/releases/benchmark_candidates.reviewed.json \
+  --approved-output human_review/data/releases/benchmark_release_candidates.json</pre>
+      </section>
+
+      <section class="panel">
+        <h2>必填字段</h2>
+        <ul class="list">
+          <li>`reference_answer_supported`</li>
+          <li>`final_state_is_correctly_specified`</li>
+          <li>`verifier_design_is_feasible`</li>
+          <li>`reward_should_be_verifiable`</li>
+          <li>`query_is_natural`</li>
+          <li>`is_single_target_error`</li>
+        </ul>
+        <p class="warn">这些字段不填，merge 阶段会直接报错。</p>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

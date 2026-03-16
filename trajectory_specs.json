@@ -1,0 +1,2416 @@
+[
+  {
+    "trajectory_id": "traj__c894466a581f",
+    "task_id": "c894466a581f",
+    "plan_id": "健康医疗__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=3, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__51c442b314e8",
+    "task_id": "51c442b314e8",
+    "plan_id": "健康医疗__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__fda6793bb405",
+    "task_id": "fda6793bb405",
+    "plan_id": "健康医疗__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__7885fe74bf30",
+    "task_id": "7885fe74bf30",
+    "plan_id": "健康医疗__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__caa48df67c0b",
+    "task_id": "caa48df67c0b",
+    "plan_id": "健康医疗__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__07ac67cf203a",
+    "task_id": "07ac67cf203a",
+    "plan_id": "健康医疗__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__e96d16340a3d",
+    "task_id": "e96d16340a3d",
+    "plan_id": "健康医疗__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__e3362e5aa5b0",
+    "task_id": "e3362e5aa5b0",
+    "plan_id": "健康医疗__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__8fc15194503e",
+    "task_id": "8fc15194503e",
+    "plan_id": "健康医疗__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__3ca0d871feca",
+    "task_id": "3ca0d871feca",
+    "plan_id": "健康医疗__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=5, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][边界感知] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__e598b95bcea7",
+    "task_id": "e598b95bcea7",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=娱乐休闲, 文档数=4, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[娱乐休闲][生成控制] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__2148a6cd5fd5",
+    "task_id": "2148a6cd5fd5",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=娱乐休闲, 文档数=4, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[娱乐休闲][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__4f5d463f9c42",
+    "task_id": "4f5d463f9c42",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=娱乐休闲, 文档数=4, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[娱乐休闲][边界感知] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__7cd55df8b7ac",
+    "task_id": "7cd55df8b7ac",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=娱乐休闲, 文档数=3, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[娱乐休闲][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__3559175edd4a",
+    "task_id": "3559175edd4a",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=出行交通, 文档数=3, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[出行交通][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__a08698785ec9",
+    "task_id": "a08698785ec9",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=娱乐休闲, 文档数=4, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[娱乐休闲][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__3c47f2e42fbf",
+    "task_id": "3c47f2e42fbf",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=娱乐休闲, 文档数=4, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[娱乐休闲][生成控制] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__ad0e1999a35c",
+    "task_id": "ad0e1999a35c",
+    "plan_id": "娱乐休闲__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=法律政务, 文档数=4, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[法律政务][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__2afa423e6580",
+    "task_id": "2afa423e6580",
+    "plan_id": "教育考试__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=5, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][生成控制] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__ba6539156e5f",
+    "task_id": "ba6539156e5f",
+    "plan_id": "教育考试__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=5, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][边界感知] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__7137b91dc9b5",
+    "task_id": "7137b91dc9b5",
+    "plan_id": "教育考试__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=5, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][文档整合] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__f2e70e82c413",
+    "task_id": "f2e70e82c413",
+    "plan_id": "教育考试__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=5, 长度≈5000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][生成控制] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__a3508af1073b",
+    "task_id": "a3508af1073b",
+    "plan_id": "教育考试__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=5, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][生成控制] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__5a1c2cf17ecf",
+    "task_id": "5a1c2cf17ecf",
+    "plan_id": "教育考试__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=2, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][生成控制] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__c6311724333d",
+    "task_id": "c6311724333d",
+    "plan_id": "教育考试__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=2, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][生成控制] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__d3b24c9826b5",
+    "task_id": "d3b24c9826b5",
+    "plan_id": "教育考试__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=2, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][生成控制] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__97ab1cabf2fb",
+    "task_id": "97ab1cabf2fb",
+    "plan_id": "教育考试__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=2, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][文档整合] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__e2105d92e82e",
+    "task_id": "e2105d92e82e",
+    "plan_id": "教育考试__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=教育考试, 文档数=2, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[教育考试][生成控制] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__01ba26c41870",
+    "task_id": "01ba26c41870",
+    "plan_id": "文化历史__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=文化历史, 文档数=5, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[文化历史][生成控制] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__110f0d6a647d",
+    "task_id": "110f0d6a647d",
+    "plan_id": "文化历史__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=文化历史, 文档数=4, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[文化历史][生成控制] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__b051a0dc2d43",
+    "task_id": "b051a0dc2d43",
+    "plan_id": "文化历史__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=文化历史, 文档数=3, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[文化历史][生成控制] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__6ba403e16455",
+    "task_id": "6ba403e16455",
+    "plan_id": "文化历史__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=文化历史, 文档数=3, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[文化历史][文档整合] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__b9d2cfe1e554",
+    "task_id": "b9d2cfe1e554",
+    "plan_id": "文化历史__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=文化历史, 文档数=3, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[文化历史][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__ae6d3e225c3d",
+    "task_id": "ae6d3e225c3d",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=出行交通, 文档数=6, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[出行交通][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__1766fc71b706",
+    "task_id": "1766fc71b706",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=法律政务, 文档数=7, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[法律政务][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__561876b6128b",
+    "task_id": "561876b6128b",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=法律政务, 文档数=6, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[法律政务][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__0063aa65fbd1",
+    "task_id": "0063aa65fbd1",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=法律政务, 文档数=6, 长度≈5000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[法律政务][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__1162d99ca69f",
+    "task_id": "1162d99ca69f",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=出行交通, 文档数=6, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[出行交通][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__313a0700aa66",
+    "task_id": "313a0700aa66",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=出行交通, 文档数=7, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[出行交通][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__55d8a0ac77ef",
+    "task_id": "55d8a0ac77ef",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=法律政务, 文档数=7, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[法律政务][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__b852b2d39825",
+    "task_id": "b852b2d39825",
+    "plan_id": "法律政务__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=健康医疗, 文档数=6, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[健康医疗][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__bbbacb4e34a5",
+    "task_id": "bbbacb4e34a5",
+    "plan_id": "科技互联网__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=1, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__2183f1242627",
+    "task_id": "2183f1242627",
+    "plan_id": "科技互联网__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=1, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][信息定位] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__5cff6836cd60",
+    "task_id": "5cff6836cd60",
+    "plan_id": "科技互联网__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=1, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__16e4a2435de8",
+    "task_id": "16e4a2435de8",
+    "plan_id": "科技互联网__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=1, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__aae09b3ab42a",
+    "task_id": "aae09b3ab42a",
+    "plan_id": "科技互联网__错误拼接__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=娱乐休闲, 文档数=1, 长度≈80000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[娱乐休闲][文档整合] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__525a75526fdd",
+    "task_id": "525a75526fdd",
+    "plan_id": "科技互联网__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=3, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__214939acb4db",
+    "task_id": "214939acb4db",
+    "plan_id": "科技互联网__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=3, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__6a1a3f95c444",
+    "task_id": "6a1a3f95c444",
+    "plan_id": "科技互联网__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=4, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__2e06c5bd7e90",
+    "task_id": "2e06c5bd7e90",
+    "plan_id": "科技互联网__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=3, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__0e6d1ef51c5b",
+    "task_id": "0e6d1ef51c5b",
+    "plan_id": "科技互联网__错误拼接__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=科技互联网, 文档数=4, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[科技互联网][文档整合] 模拟问题 (复杂度2)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__3a26a1604e9b",
+    "task_id": "3a26a1604e9b",
+    "plan_id": "经济金融__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=8, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__74e2e829b283",
+    "task_id": "74e2e829b283",
+    "plan_id": "经济金融__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=8, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__8b9db10a0927",
+    "task_id": "8b9db10a0927",
+    "plan_id": "经济金融__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=8, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__da28f865aa1c",
+    "task_id": "da28f865aa1c",
+    "plan_id": "经济金融__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=8, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__666173cc146a",
+    "task_id": "666173cc146a",
+    "plan_id": "经济金融__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=8, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__19b15341c0d8",
+    "task_id": "19b15341c0d8",
+    "plan_id": "经济金融__限定错误__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=3, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__0387ba957615",
+    "task_id": "0387ba957615",
+    "plan_id": "经济金融__限定错误__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=3, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__1329a74ac3de",
+    "task_id": "1329a74ac3de",
+    "plan_id": "经济金融__限定错误__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=5, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][文档整合] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__5863dc0f778c",
+    "task_id": "5863dc0f778c",
+    "plan_id": "经济金融__限定错误__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=3, 长度≈120000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__ed62e48881cb",
+    "task_id": "ed62e48881cb",
+    "plan_id": "经济金融__限定错误__medium__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=经济金融, 文档数=5, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[经济金融][信息定位] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__201313ac1a3b",
+    "task_id": "201313ac1a3b",
+    "plan_id": "自然科学__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=2, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__ee10850cbe7c",
+    "task_id": "ee10850cbe7c",
+    "plan_id": "自然科学__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=1, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__896f0a660e38",
+    "task_id": "896f0a660e38",
+    "plan_id": "自然科学__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=2, 长度≈30000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__f63a1f976bc7",
+    "task_id": "f63a1f976bc7",
+    "plan_id": "自然科学__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=1, 长度≈10000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__ae170936d9e6",
+    "task_id": "ae170936d9e6",
+    "plan_id": "自然科学__引用错误__hard__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=1, 长度≈15000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__a5f729fc807a",
+    "task_id": "a5f729fc807a",
+    "plan_id": "自然科学__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=3, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][信息定位] 模拟问题 (复杂度3)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__823bfb4bd579",
+    "task_id": "823bfb4bd579",
+    "plan_id": "自然科学__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=文化历史, 文档数=3, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[文化历史][边界感知] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__17de013c0652",
+    "task_id": "17de013c0652",
+    "plan_id": "自然科学__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=5, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__34cb5ebc5f37",
+    "task_id": "34cb5ebc5f37",
+    "plan_id": "自然科学__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=3, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  },
+  {
+    "trajectory_id": "traj__d657e24684a5",
+    "task_id": "d657e24684a5",
+    "plan_id": "自然科学__错误拼接__easy__static",
+    "assistant_model": "gpt-5.1",
+    "user_model": "user-sim-v2",
+    "scenario_type": "static",
+    "status": "pending_rollout",
+    "steps": [
+      {
+        "actor": "system",
+        "action_type": "context",
+        "content": "[模拟上下文] 领域=自然科学, 文档数=3, 长度≈50000",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      },
+      {
+        "actor": "user",
+        "action_type": "message",
+        "content": "[自然科学][边界感知] 模拟问题 (复杂度1)",
+        "tool_name": "",
+        "tool_args": {},
+        "tool_result": {}
+      }
+    ],
+    "final_state": {},
+    "verifier_result": {},
+    "reward": 0.0,
+    "failure_attribution": "",
+    "metadata": {
+      "bootstrap_only": true
+    }
+  }
+]

@@ -8,8 +8,9 @@
 
 1. 这道题是否真的主要打在目标 `error-type`
 2. `reference_answer` 是否完全由 `context` 支撑
-3. 题目是否自然，像真实用户问题
-4. 如果是 `real_time / out_of_date` 题，对应的时间元数据和配对关系是否正确
+3. 这道题是否有清晰、可验证的最终状态或 verifier 设计空间
+4. 题目是否自然，像真实用户问题
+5. 如果是 `real_time / out_of_date` 题，对应的时间元数据和配对关系是否正确
 
 ## 文件角色
 
@@ -50,7 +51,17 @@
 
 如果做不到，至少标记为 `revise`。
 
-### 3. 题目自然性
+### 3. 可验证最终状态 / verifier 可行性
+
+必须人工确认：
+
+- 这道题能否抽象出结构化 `final_state`
+- verifier 是否可以基于状态匹配、字段匹配或规则匹配判断成功
+- 是否必须依赖模糊主观偏好才能判断“对/错”
+
+如果只能靠模糊主观判断，不适合直接进入 verifier-based RL 数据池。
+
+### 4. 题目自然性
 
 重点检查：
 
@@ -60,7 +71,7 @@
 
 如果 query 很机械，但结构仍可修，建议 `revise`；如果整体过于伪造，建议 `reject`。
 
-### 4. 时间型题 (`real_time / out_of_date`)
+### 5. 时间型题 (`real_time / out_of_date`)
 
 这部分必须人工确认：
 
@@ -75,17 +86,17 @@
 ### Step 1. 导出待审任务
 
 ```bash
-python3 review_benchmark_candidates.py export \
+python3 -m human_review.cli export \
   --input benchmark_candidates.json \
-  --output benchmark_review_tasks.jsonl
+  --output human_review/data/tasks/benchmark_review_tasks.jsonl
 ```
 
 如果只想继续审未批准样本：
 
 ```bash
-python3 review_benchmark_candidates.py export \
-  --input benchmark_candidates.reviewed.json \
-  --output benchmark_review_tasks.pending.jsonl \
+python3 -m human_review.cli export \
+  --input human_review/data/releases/benchmark_candidates.reviewed.json \
+  --output human_review/data/tasks/benchmark_review_tasks.pending.jsonl \
   --only-pending
 ```
 
@@ -101,6 +112,9 @@ python3 review_benchmark_candidates.py export \
     "confirmed_target_error_type": "错误匹配",
     "confirmed_scenario_type": "static",
     "reference_answer_supported": true,
+    "final_state_is_correctly_specified": true,
+    "verifier_design_is_feasible": true,
+    "reward_should_be_verifiable": true,
     "query_is_natural": true,
     "time_metadata_correct": null,
     "is_single_target_error": true,
@@ -121,6 +135,12 @@ python3 review_benchmark_candidates.py export \
   人工最终确认的场景类型
 - `reference_answer_supported`
   标答是否完全由 context 支撑
+- `final_state_is_correctly_specified`
+  是否能明确写出任务完成后的结构化状态
+- `verifier_design_is_feasible`
+  是否能为该题设计程序化 verifier
+- `reward_should_be_verifiable`
+  该题是否适合作为后续 verifier reward 的样本
 - `query_is_natural`
   是否像真实用户问题
 - `time_metadata_correct`
@@ -137,11 +157,11 @@ python3 review_benchmark_candidates.py export \
 ### Step 3. 回写人工结果
 
 ```bash
-python3 review_benchmark_candidates.py merge \
+python3 -m human_review.cli merge \
   --input benchmark_candidates.json \
-  --reviews benchmark_review_tasks.reviewed.jsonl \
-  --output benchmark_candidates.reviewed.json \
-  --approved-output benchmark_release_candidates.json
+  --reviews human_review/data/reviews/benchmark_review_tasks.reviewed.jsonl \
+  --output human_review/data/releases/benchmark_candidates.reviewed.json \
+  --approved-output human_review/data/releases/benchmark_release_candidates.json
 ```
 
 这一步会：
@@ -156,7 +176,7 @@ python3 review_benchmark_candidates.py merge \
 - 喂给 bench：
   只使用 `approve` 的题
 - 喂给训练：
-  优先使用 `approve` 且 `is_single_target_error=true` 的题
+  优先使用 `approve` 且 `is_single_target_error=true`、`verifier_design_is_feasible=true` 的题
 - 喂给迭代生成：
   把 `revise` / `reject` 的原因收集起来，作为下一轮 prototype 改进信号
 
@@ -168,6 +188,9 @@ python3 review_benchmark_candidates.py merge \
 - `human_review.labeled_target_error_type`
 - `human_review.labeled_scenario_type`
 - `human_review.review_result.reference_answer_supported`
+- `human_review.review_result.final_state_is_correctly_specified`
+- `human_review.review_result.verifier_design_is_feasible`
+- `human_review.review_result.reward_should_be_verifiable`
 - `human_review.review_result.query_is_natural`
 - `human_review.review_result.time_metadata_correct`
 - `human_review.review_result.is_single_target_error`
@@ -177,7 +200,8 @@ python3 review_benchmark_candidates.py merge \
 
 1. 人工最终确认的 `error-type`
 2. 是否单目标错误
-3. 是否可作为正式发布题
+3. 是否能进入 verifier-based 训练数据池
+4. 是否可作为正式发布题
 
 ## 推荐审核分工
 
