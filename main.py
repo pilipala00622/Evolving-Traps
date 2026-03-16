@@ -17,6 +17,7 @@ import argparse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from config import GAConfig
+from core.benchmark_validation import BenchmarkCalibrator, BenchmarkValidator
 from core.llm_interface import LLMInterface
 from core.evolution import EvolutionEngine
 
@@ -75,6 +76,10 @@ def run_pipeline(
     coarse_filter_model: str = "deepseek-v3.2",
     eval_models: list | None = None,
     config_overrides: dict | None = None,
+    build_benchmark: bool = False,
+    validation_models: list | None = None,
+    anchor_models: list | None = None,
+    validation_repeats: int = 2,
 ):
     """运行基础 GA 管线，可选择 mock 或真实 API。"""
     print("\n" + "=" * 60)
@@ -168,10 +173,44 @@ def run_pipeline(
         ],
     }
 
+    if build_benchmark:
+        validator = BenchmarkValidator(
+            llm=llm,
+            validation_models=validation_models or config.eval_models,
+            repeats_per_model=validation_repeats,
+        )
+        calibrator = BenchmarkCalibrator(
+            llm=llm,
+            anchor_models=anchor_models or config.eval_models,
+        )
+
+        benchmark_items = []
+        for ind in final_pool:
+            item = validator.validate_candidate(
+                ind,
+                target_error_type=ind.dominant_attribution_type(),
+                scenario_type="static",
+                prototype_id=ind.id,
+                metadata={
+                    "generation": ind.generation,
+                    "parent_ids": list(ind.parent_ids),
+                },
+            )
+            item.calibration_stats = calibrator.calibrate_item(item, ind)
+            benchmark_items.append(item.to_dict())
+
+        output["benchmark_candidates"] = benchmark_items
+
     output_path = os.path.join(os.path.dirname(__file__), "evolution_results.json")
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2, default=str)
     print(f"\n结果已导出: {output_path}")
+
+    if build_benchmark:
+        benchmark_path = os.path.join(os.path.dirname(__file__), "benchmark_candidates.json")
+        with open(benchmark_path, "w", encoding="utf-8") as f:
+            json.dump(output["benchmark_candidates"], f, ensure_ascii=False, indent=2, default=str)
+        print(f"Benchmark 候选集已导出: {benchmark_path}")
 
     return output
 
@@ -189,6 +228,25 @@ def main():
         nargs="+",
         default=None,
         help="被测模型列表，默认使用配置内的 gpt-5.2 / deepseek-v3.2 / ernie-5.0",
+    )
+    parser.add_argument("--build-benchmark", action="store_true", help="对最终题库做验证与校准，导出 benchmark 候选集")
+    parser.add_argument(
+        "--validation-models",
+        nargs="+",
+        default=None,
+        help="验证阶段使用的模型列表，默认复用 eval-models",
+    )
+    parser.add_argument(
+        "--anchor-models",
+        nargs="+",
+        default=None,
+        help="校准阶段使用的锚点模型列表，默认复用 eval-models",
+    )
+    parser.add_argument(
+        "--validation-repeats",
+        type=int,
+        default=2,
+        help="每个验证模型重复评估次数",
     )
     args = parser.parse_args()
 
@@ -214,6 +272,10 @@ def main():
         coarse_filter_model=args.coarse_filter_model,
         eval_models=args.eval_models,
         config_overrides=config_overrides,
+        build_benchmark=args.build_benchmark,
+        validation_models=args.validation_models,
+        anchor_models=args.anchor_models,
+        validation_repeats=args.validation_repeats,
     )
 
 

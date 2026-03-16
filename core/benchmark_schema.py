@@ -1,0 +1,116 @@
+"""
+Benchmark item schema for validated hallucination evaluation sets.
+
+This module separates:
+1. Candidate generation output (`Individual`)
+2. Validation/calibration results
+3. Human review state needed before bench release
+"""
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass, field
+from datetime import datetime, timezone
+from typing import Dict, List, Optional
+
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+@dataclass
+class ValidationStats:
+    """Automatic validation metrics for a candidate benchmark item."""
+
+    validation_models: List[str] = field(default_factory=list)
+    repeats_per_model: int = 1
+    target_error_type: str = ""
+    target_trigger_threshold: float = 0.4
+    target_error_trigger_rate: float = 0.0
+    target_error_mean_strength: float = 0.0
+    non_target_error_leakage: float = 0.0
+    dominant_error_match_rate: float = 0.0
+    average_hallucination_rate: float = 0.0
+    hallucination_rate_std: float = 0.0
+    answerability_rate: float = 0.0
+    naturalness_mean: float = 0.0
+    naturalness_std: float = 0.0
+    sample_count: int = 0
+
+
+@dataclass
+class CalibrationStats:
+    """Calibration statistics used to keep benchmark difficulty stable."""
+
+    anchor_models: List[str] = field(default_factory=list)
+    anchor_scores: Dict[str, float] = field(default_factory=dict)
+    score_mean: float = 0.0
+    score_std: float = 0.0
+    difficulty_bucket: str = "unknown"
+    recommended_for_release: bool = False
+
+
+@dataclass
+class HumanReviewState:
+    """Tracks what humans still need to check before releasing a benchmark item."""
+
+    status: str = "needs_review"
+    required_checks: List[str] = field(default_factory=list)
+    reviewer: str = ""
+    notes: str = ""
+    labeled_target_error_type: str = ""
+    labeled_scenario_type: str = ""
+
+
+@dataclass
+class BenchmarkItem:
+    """Canonical stored representation for a validated benchmark item."""
+
+    item_id: str
+    source_individual_id: str
+    created_at: str
+    scenario_type: str
+    target_error_type: str
+    prototype_id: str = ""
+    paired_group_id: str = ""
+    prompt_template_id: str = ""
+    knowledge_cutoff: str = ""
+    context_timestamp: str = ""
+    query: str = ""
+    context: str = ""
+    reference_answer: str = ""
+    gene_vector: Dict[str, object] = field(default_factory=dict)
+    validation_stats: ValidationStats = field(default_factory=ValidationStats)
+    calibration_stats: CalibrationStats = field(default_factory=CalibrationStats)
+    human_review: HumanReviewState = field(default_factory=HumanReviewState)
+    metadata: Dict[str, object] = field(default_factory=dict)
+
+    def to_dict(self) -> Dict[str, object]:
+        return asdict(self)
+
+
+def build_default_review_checks(
+    *,
+    scenario_type: str,
+    target_error_type: str,
+    has_target_mismatch: bool,
+    high_leakage: bool,
+) -> List[str]:
+    """Returns the baseline human checks that should be completed."""
+    checks = [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        f"确认目标错误类型 `{target_error_type}` 标注正确，且不是由其他错误类型主导",
+    ]
+
+    if scenario_type in {"real_time", "out_of_date"}:
+        checks.append("确认题目的时间戳、知识截止时间和上下文版本填写正确")
+        checks.append("确认 paired item 只改变时间条件，不改变题型和干扰强度")
+
+    if has_target_mismatch:
+        checks.append("人工复核：自动判定的主导错误类型与目标错误类型不一致")
+
+    if high_leakage:
+        checks.append("人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题")
+
+    return checks

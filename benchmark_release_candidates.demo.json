@@ -1,0 +1,110 @@
+[
+  {
+    "item_id": "be2c195605d8",
+    "source_individual_id": "be2c195605d8",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "be2c195605d8",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_535",
+      "attribute_slot": "attr_27",
+      "condition_slot": "condition_71",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.27311474524743407,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.3295434456062163,
+      "hedging_level": 3,
+      "info_gap": 0.537704314023491,
+      "cross_doc_overlap": 0.4537809363958172,
+      "target_attribution": "",
+      "target_difficulty": 0.6336827906607282,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.8479953196173372,
+      "non_target_error_leakage": 0.6936677427257272,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.4333689650776051,
+      "hallucination_rate_std": 0.10374580963516428,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.4099647364000485,
+      "naturalness_std": 0.12879915432751562,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 73.72,
+        "deepseek-v3.2": 64.6,
+        "ernie-5.0": 39.76
+      },
+      "score_mean": 59.35999999999999,
+      "score_std": 14.35069336303999,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "approved",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "demo_reviewer",
+      "notes": "demo approve",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static",
+      "review_result": {
+        "reviewer": "demo_reviewer",
+        "decision": "approve",
+        "confirmed_target_error_type": "错误匹配",
+        "confirmed_scenario_type": "static",
+        "reference_answer_supported": true,
+        "query_is_natural": true,
+        "time_metadata_correct": null,
+        "is_single_target_error": true,
+        "release_priority": "high",
+        "issue_tags": [
+          "demo_ok"
+        ],
+        "notes": "demo approve"
+      }
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "63dc93d21854",
+        "677b9775f46e"
+      ]
+    }
+  }
+]

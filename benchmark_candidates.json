@@ -1,0 +1,4662 @@
+[
+  {
+    "item_id": "be2c195605d8",
+    "source_individual_id": "be2c195605d8",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "be2c195605d8",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_535",
+      "attribute_slot": "attr_27",
+      "condition_slot": "condition_71",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.27311474524743407,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.3295434456062163,
+      "hedging_level": 3,
+      "info_gap": 0.537704314023491,
+      "cross_doc_overlap": 0.4537809363958172,
+      "target_attribution": "",
+      "target_difficulty": 0.6336827906607282,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.8479953196173372,
+      "non_target_error_leakage": 0.6936677427257272,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.4333689650776051,
+      "hallucination_rate_std": 0.10374580963516428,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.4099647364000485,
+      "naturalness_std": 0.12879915432751562,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 73.72,
+        "deepseek-v3.2": 64.6,
+        "ernie-5.0": 39.76
+      },
+      "score_mean": 59.35999999999999,
+      "score_std": 14.35069336303999,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "63dc93d21854",
+        "677b9775f46e"
+      ]
+    }
+  },
+  {
+    "item_id": "6c9936b16bbf",
+    "source_individual_id": "6c9936b16bbf",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "6c9936b16bbf",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_256",
+      "attribute_slot": "attr_77",
+      "condition_slot": "condition_178",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.2845732339360893,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.1754606156443283,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.35858375532611797,
+      "hedging_level": 3,
+      "info_gap": 0.656666707844141,
+      "cross_doc_overlap": 0.34998366345023046,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.5532687639790385,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.724729769801116,
+      "non_target_error_leakage": 0.7564985822562615,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.4497816005153134,
+      "hallucination_rate_std": 0.15351746633327387,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.4802161709841464,
+      "naturalness_std": 0.23603847293834232,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 70.58,
+        "deepseek-v3.2": 58.67,
+        "ernie-5.0": 42.79
+      },
+      "score_mean": 57.346666666666664,
+      "score_std": 11.383743770053076,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 7,
+      "parent_ids": [
+        "aaf00cc7f1b8",
+        "02b150706901"
+      ]
+    }
+  },
+  {
+    "item_id": "ae9b7cf022ec",
+    "source_individual_id": "ae9b7cf022ec",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "ae9b7cf022ec",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=9, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_763",
+      "attribute_slot": "attr_52",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 9,
+      "semantic_similarity": 0.4061874062225037,
+      "shared_entities": 4,
+      "answer_position": "head",
+      "distractor_ratio": 0.2697158471041028,
+      "total_length": 50000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.22088951162175482,
+      "hedging_level": 3,
+      "info_gap": 0.29263448754998206,
+      "cross_doc_overlap": 0.287662090144306,
+      "target_attribution": "",
+      "target_difficulty": 0.42767048634637495,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7303570018301277,
+      "non_target_error_leakage": 0.6837797045390365,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.3516199131229216,
+      "hallucination_rate_std": 0.12735902750300437,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.9680776147656154,
+      "naturalness_std": 0.2706530935449194,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 74.12,
+        "deepseek-v3.2": 70.84,
+        "ernie-5.0": 48.88
+      },
+      "score_mean": 64.61333333333333,
+      "score_std": 11.205443121784857,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 5,
+      "parent_ids": [
+        "aa5f771bf708",
+        "2d70a1b6d0ed"
+      ]
+    }
+  },
+  {
+    "item_id": "fde9f8cee898",
+    "source_individual_id": "fde9f8cee898",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "fde9f8cee898",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[教育考试][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=教育考试, 文档数=1, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_773",
+      "attribute_slot": "attr_55",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "教育考试",
+      "doc_count": 1,
+      "semantic_similarity": 0.38374829070445715,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.25759936055340715,
+      "total_length": 80000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.4314657303048327,
+      "hedging_level": 3,
+      "info_gap": 0.2954595091629041,
+      "cross_doc_overlap": 0.5268062687306687,
+      "target_attribution": "",
+      "target_difficulty": 0.7262779650861562,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6905133220796746,
+      "non_target_error_leakage": 0.7315153568828884,
+      "dominant_error_match_rate": 0.5,
+      "average_hallucination_rate": 0.3524058617944312,
+      "hallucination_rate_std": 0.09456801054647507,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.006327312381536,
+      "naturalness_std": 0.12449498488206806,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 75.95,
+        "deepseek-v3.2": 64.4,
+        "ernie-5.0": 53.5
+      },
+      "score_mean": 64.61666666666667,
+      "score_std": 9.166454543000196,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 5,
+      "parent_ids": [
+        "6e0fd7178475",
+        "9e5ef55395ad"
+      ]
+    }
+  },
+  {
+    "item_id": "aaf00cc7f1b8",
+    "source_individual_id": "aaf00cc7f1b8",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "aaf00cc7f1b8",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[娱乐休闲][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=娱乐休闲, 文档数=3, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_256",
+      "attribute_slot": "attr_77",
+      "condition_slot": "condition_178",
+      "complexity": 1,
+      "domain": "娱乐休闲",
+      "doc_count": 3,
+      "semantic_similarity": 0.49184913762587185,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 30000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.42016198397407295,
+      "hedging_level": 3,
+      "info_gap": 0.569684552961585,
+      "cross_doc_overlap": 0.347513695056452,
+      "target_attribution": "",
+      "target_difficulty": 0.5532687639790385,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7578355956310291,
+      "non_target_error_leakage": 0.7226574512879912,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.4382230745577405,
+      "hallucination_rate_std": 0.12739129302989635,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.5115335424369363,
+      "naturalness_std": 0.18494243497339563,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 67.52,
+        "deepseek-v3.2": 55.48,
+        "ernie-5.0": 47.58
+      },
+      "score_mean": 56.85999999999999,
+      "score_std": 8.198747871880599,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 5,
+      "parent_ids": [
+        "63dc93d21854",
+        "7d6f434f6f50"
+      ]
+    }
+  },
+  {
+    "item_id": "b1256ba2a866",
+    "source_individual_id": "b1256ba2a866",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "b1256ba2a866",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[传统行业][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=传统行业, 文档数=1, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_181",
+      "attribute_slot": "attr_16",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "传统行业",
+      "doc_count": 1,
+      "semantic_similarity": 0.4309338016238475,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 30000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.41359521905472385,
+      "hedging_level": 2,
+      "info_gap": 0.06543482233279531,
+      "cross_doc_overlap": 0.2509261698061134,
+      "target_attribution": "",
+      "target_difficulty": 0.6942250705257029,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6014597781260912,
+      "non_target_error_leakage": 0.6965077206873108,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.33154499214903427,
+      "hallucination_rate_std": 0.0861085947972518,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.946393513770838,
+      "naturalness_std": 0.16252762998805614,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 86.07,
+        "deepseek-v3.2": 68.79,
+        "ernie-5.0": 68.55
+      },
+      "score_mean": 74.47,
+      "score_std": 8.203023832709492,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 4,
+      "parent_ids": [
+        "2cbfd609a534",
+        "05eb5e390064"
+      ]
+    }
+  },
+  {
+    "item_id": "e1b6026d67c7",
+    "source_individual_id": "e1b6026d67c7",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "e1b6026d67c7",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_910",
+      "attribute_slot": "attr_57",
+      "condition_slot": "condition_134",
+      "complexity": 1,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.41832300455375065,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.5223126721106902,
+      "total_length": 120000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.4269069742280954,
+      "hedging_level": 3,
+      "info_gap": 0.5618530337450355,
+      "cross_doc_overlap": 0.4140889091625256,
+      "target_attribution": "",
+      "target_difficulty": 0.36984397438843286,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7471598768001565,
+      "non_target_error_leakage": 0.7158094075714755,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.3929528129235989,
+      "hallucination_rate_std": 0.15344374519365053,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.5479643876429896,
+      "naturalness_std": 0.19361959496565903,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 78.23,
+        "deepseek-v3.2": 57.16,
+        "ernie-5.0": 44.26
+      },
+      "score_mean": 59.88333333333333,
+      "score_std": 14.00125311852082,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "aaf00cc7f1b8",
+        "97a0aa9e2581"
+      ]
+    }
+  },
+  {
+    "item_id": "0439281a44de",
+    "source_individual_id": "0439281a44de",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "0439281a44de",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_870",
+      "attribute_slot": "attr_92",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.27311474524743407,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.7301800336624118,
+      "hedging_level": 2,
+      "info_gap": 0.48424134755268544,
+      "cross_doc_overlap": 0.36769807356136713,
+      "target_attribution": "",
+      "target_difficulty": 0.42767048634637495,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7185729942870562,
+      "non_target_error_leakage": 0.6314510766564337,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.35329109756822996,
+      "hallucination_rate_std": 0.10265815487304936,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.4918865758775577,
+      "naturalness_std": 0.2759505816176042,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 77.16,
+        "deepseek-v3.2": 62.27,
+        "ernie-5.0": 44.19
+      },
+      "score_mean": 61.20666666666667,
+      "score_std": 13.480930564649046,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 3,
+      "parent_ids": [
+        "677b9775f46e",
+        "3871bb2959c4"
+      ]
+    }
+  },
+  {
+    "item_id": "e696c9492286",
+    "source_individual_id": "e696c9492286",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "e696c9492286",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=9, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_134",
+      "attribute_slot": "attr_62",
+      "condition_slot": "condition_111",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 9,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "head",
+      "distractor_ratio": 0.2697158471041028,
+      "total_length": 80000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.685762172868049,
+      "hedging_level": 2,
+      "info_gap": 0.6365067687103964,
+      "cross_doc_overlap": 0.33535058944307544,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.42767048634637495,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.8295216608092361,
+      "non_target_error_leakage": 0.6085191138020011,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.34880621236556414,
+      "hallucination_rate_std": 0.1566093354978906,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.3974281639450994,
+      "naturalness_std": 0.1344564395160583,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 73.74,
+        "deepseek-v3.2": 74.68,
+        "ernie-5.0": 52.35
+      },
+      "score_mean": 66.92333333333333,
+      "score_std": 10.312045814914171,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 6,
+      "parent_ids": [
+        "2d70a1b6d0ed",
+        "adb5ff75c413"
+      ]
+    }
+  },
+  {
+    "item_id": "7d6f434f6f50",
+    "source_individual_id": "7d6f434f6f50",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "7d6f434f6f50",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[娱乐休闲][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=娱乐休闲, 文档数=3, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_123",
+      "attribute_slot": "attr_13",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "娱乐休闲",
+      "doc_count": 3,
+      "semantic_similarity": 0.49184913762587185,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 30000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.35655363225714914,
+      "hedging_level": 2,
+      "info_gap": 0.4538508342605339,
+      "cross_doc_overlap": 0.46328683341023047,
+      "target_attribution": "",
+      "target_difficulty": 0.5222482883964588,
+      "step_expansion": 1
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 0.5,
+      "target_error_mean_strength": 0.4552703078938906,
+      "non_target_error_leakage": 0.7637160952755583,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.30025866454730366,
+      "hallucination_rate_std": 0.10851898956666263,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.0104911645637875,
+      "naturalness_std": 0.1986273505234951,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 74.58,
+        "deepseek-v3.2": 72.93,
+        "ernie-5.0": 65.65
+      },
+      "score_mean": 71.05333333333334,
+      "score_std": 3.8796592061101887,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 1,
+      "parent_ids": [
+        "622707dede36",
+        "396026ab7bb1"
+      ]
+    }
+  },
+  {
+    "item_id": "02b150706901",
+    "source_individual_id": "02b150706901",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "02b150706901",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_870",
+      "attribute_slot": "attr_92",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.2845732339360893,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.1754606156443283,
+      "total_length": 50000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.8703859472034623,
+      "hedging_level": 2,
+      "info_gap": 0.4857882542222768,
+      "cross_doc_overlap": 0.6064900724457838,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.4679719509679727,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6466197739622705,
+      "non_target_error_leakage": 0.7193610431053568,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.31330084717722084,
+      "hallucination_rate_std": 0.14675334040087537,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.128028273366078,
+      "naturalness_std": 0.20559116547311207,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 72.5,
+        "deepseek-v3.2": 69.7,
+        "ernie-5.0": 54.93
+      },
+      "score_mean": 65.71,
+      "score_std": 7.707844489003827,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 6,
+      "parent_ids": [
+        "97a0aa9e2581",
+        "0439281a44de"
+      ]
+    }
+  },
+  {
+    "item_id": "36b33934586d",
+    "source_individual_id": "36b33934586d",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "36b33934586d",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][文档整合] 模拟问题 (复杂度2)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_256",
+      "attribute_slot": "attr_77",
+      "condition_slot": "condition_178",
+      "complexity": 2,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.2845732339360893,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.1754606156443283,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.35858375532611797,
+      "hedging_level": 3,
+      "info_gap": 0.656666707844141,
+      "cross_doc_overlap": 0.34998366345023046,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.5532687639790385,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.8036074580142866,
+      "non_target_error_leakage": 0.7232641471640403,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.42411690073982816,
+      "hallucination_rate_std": 0.16398983947275658,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.4472500091313454,
+      "naturalness_std": 0.28697142014612187,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 74.73,
+        "deepseek-v3.2": 63.27,
+        "ernie-5.0": 53.98
+      },
+      "score_mean": 63.99333333333334,
+      "score_std": 8.486578946915081,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "6c9936b16bbf",
+        "b1256ba2a866"
+      ]
+    }
+  },
+  {
+    "item_id": "8c9ff7e923a1",
+    "source_individual_id": "8c9ff7e923a1",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "8c9ff7e923a1",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[教育考试][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=教育考试, 文档数=1, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_750",
+      "attribute_slot": "attr_97",
+      "condition_slot": "condition_133",
+      "complexity": 1,
+      "domain": "教育考试",
+      "doc_count": 1,
+      "semantic_similarity": 0.38374829070445715,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.25759936055340715,
+      "total_length": 80000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.4258201361465127,
+      "hedging_level": 3,
+      "info_gap": 0.6569253174480466,
+      "cross_doc_overlap": 0.4431648237567164,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.46600181721551137,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7770142211619978,
+      "non_target_error_leakage": 0.7333061129420622,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.43379635070770445,
+      "hallucination_rate_std": 0.12858980164677963,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.446376838915791,
+      "naturalness_std": 0.16065501904258245,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 74.14,
+        "deepseek-v3.2": 53.83,
+        "ernie-5.0": 42.02
+      },
+      "score_mean": 56.663333333333334,
+      "score_std": 13.265102922916034,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "fde9f8cee898",
+        "6c9936b16bbf"
+      ]
+    }
+  },
+  {
+    "item_id": "63dc93d21854",
+    "source_individual_id": "63dc93d21854",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "63dc93d21854",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=7, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_703",
+      "attribute_slot": "attr_25",
+      "condition_slot": "condition_72",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 7,
+      "semantic_similarity": 0.3508921181593302,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.404828851474618,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.37140137380690874,
+      "hedging_level": 3,
+      "info_gap": 0.5449047765854427,
+      "cross_doc_overlap": 0.42786384161356517,
+      "target_attribution": "",
+      "target_difficulty": 0.5652028410733749,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6926313730975865,
+      "non_target_error_leakage": 0.7176163136616113,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.3628058665635092,
+      "hallucination_rate_std": 0.11570788890323118,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.069771639221973,
+      "naturalness_std": 0.14348403977920016,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 80.56,
+        "deepseek-v3.2": 64.67,
+        "ernie-5.0": 49.51
+      },
+      "score_mean": 64.91333333333334,
+      "score_std": 12.677277134919612,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 4,
+      "parent_ids": [
+        "434ac67dfca0",
+        "20c4c3a2eabd"
+      ]
+    }
+  },
+  {
+    "item_id": "05eb5e390064",
+    "source_individual_id": "05eb5e390064",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "05eb5e390064",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][信息定位] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "信息定位",
+      "entity_slot": "entity_610",
+      "attribute_slot": "attr_73",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.30752204802597427,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.422989154307174,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.3267242999592225,
+      "hedging_level": 2,
+      "info_gap": 0.06588684331778888,
+      "cross_doc_overlap": 0.3428479734962842,
+      "target_attribution": "",
+      "target_difficulty": 0.4679719509679727,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6006095462163709,
+      "non_target_error_leakage": 0.7201787379752691,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.2984033780242283,
+      "hallucination_rate_std": 0.0980278317469793,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.9600940926649013,
+      "naturalness_std": 0.21572399864237612,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 75.36,
+        "deepseek-v3.2": 68.51,
+        "ernie-5.0": 60.78
+      },
+      "score_mean": 68.21666666666667,
+      "score_std": 5.955872918575598,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 1,
+      "parent_ids": [
+        "e26210360fd2",
+        "704cdf319a41"
+      ]
+    }
+  },
+  {
+    "item_id": "073131e73d3d",
+    "source_individual_id": "073131e73d3d",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "073131e73d3d",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=7, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_853",
+      "attribute_slot": "attr_54",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 7,
+      "semantic_similarity": 0.3508921181593302,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.404828851474618,
+      "total_length": 120000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.31547737098167683,
+      "hedging_level": 3,
+      "info_gap": 0.4562688875374835,
+      "cross_doc_overlap": 0.4592648442841424,
+      "target_attribution": "",
+      "target_difficulty": 0.5329446162219107,
+      "step_expansion": 1
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7588885731978253,
+      "non_target_error_leakage": 0.7252519296286634,
+      "dominant_error_match_rate": 0.5,
+      "average_hallucination_rate": 0.42108477437269903,
+      "hallucination_rate_std": 0.09093347968910599,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.4743411126769392,
+      "naturalness_std": 0.21094286870434473,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 77.13,
+        "deepseek-v3.2": 53.87,
+        "ernie-5.0": 41.2
+      },
+      "score_mean": 57.4,
+      "score_std": 14.879222649946017,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 5,
+      "parent_ids": [
+        "7d6f434f6f50",
+        "63dc93d21854"
+      ]
+    }
+  },
+  {
+    "item_id": "fe072da1087f",
+    "source_individual_id": "fe072da1087f",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "fe072da1087f",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[教育考试][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=教育考试, 文档数=3, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_79",
+      "attribute_slot": "attr_41",
+      "condition_slot": "condition_183",
+      "complexity": 3,
+      "domain": "教育考试",
+      "doc_count": 3,
+      "semantic_similarity": 0.38374829070445715,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.25759936055340715,
+      "total_length": 30000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.3474968897856752,
+      "hedging_level": 2,
+      "info_gap": 0.2858160157250764,
+      "cross_doc_overlap": 0.5914317348261502,
+      "target_attribution": "",
+      "target_difficulty": 0.6238258148390692,
+      "step_expansion": 4
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7324108828767338,
+      "non_target_error_leakage": 0.7230371905735856,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.42849691868757933,
+      "hallucination_rate_std": 0.13600479679076125,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.6063576573875764,
+      "naturalness_std": 0.17873332310879256,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 75.4,
+        "deepseek-v3.2": 63.15,
+        "ernie-5.0": 44.4
+      },
+      "score_mean": 60.98333333333333,
+      "score_std": 12.748093539384191,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "fde9f8cee898",
+        "9e5ef55395ad"
+      ]
+    }
+  },
+  {
+    "item_id": "c66f2f8b2c4a",
+    "source_individual_id": "c66f2f8b2c4a",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "c66f2f8b2c4a",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_676",
+      "attribute_slot": "attr_33",
+      "condition_slot": "condition_164",
+      "complexity": 1,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.30752204802597427,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.422989154307174,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.35584089383241824,
+      "hedging_level": 3,
+      "info_gap": 0.13875347578907937,
+      "cross_doc_overlap": 0.2776633836484161,
+      "target_attribution": "",
+      "target_difficulty": 0.6387002631992139,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.5793152123152203,
+      "non_target_error_leakage": 0.7202265150812108,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.3599011372676591,
+      "hallucination_rate_std": 0.11463405824903496,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.9982790430674897,
+      "naturalness_std": 0.11809472568525566,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 87.22,
+        "deepseek-v3.2": 66.42,
+        "ernie-5.0": 54.87
+      },
+      "score_mean": 69.50333333333333,
+      "score_std": 13.385585115671592,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 4,
+      "parent_ids": [
+        "05eb5e390064",
+        "434ac67dfca0"
+      ]
+    }
+  },
+  {
+    "item_id": "7181d27b22a5",
+    "source_individual_id": "7181d27b22a5",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "7181d27b22a5",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_739",
+      "attribute_slot": "attr_97",
+      "condition_slot": "condition_161",
+      "complexity": 3,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.30752204802597427,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.422989154307174,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.850586058906463,
+      "hedging_level": 3,
+      "info_gap": 0.319447346405219,
+      "cross_doc_overlap": 0.34791984478279936,
+      "target_attribution": "",
+      "target_difficulty": 0.6080007363481634,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.5797236985486842,
+      "non_target_error_leakage": 0.6528035378151378,
+      "dominant_error_match_rate": 0.16666666666666666,
+      "average_hallucination_rate": 0.2992719435211265,
+      "hallucination_rate_std": 0.1518195582384959,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.9413413042916208,
+      "naturalness_std": 0.13433829434343755,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 83.38,
+        "deepseek-v3.2": 68.6,
+        "ernie-5.0": 62.87
+      },
+      "score_mean": 71.61666666666666,
+      "score_std": 8.640610832317096,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 5,
+      "parent_ids": [
+        "cdb766a8d95c",
+        "c66f2f8b2c4a"
+      ]
+    }
+  },
+  {
+    "item_id": "cdb766a8d95c",
+    "source_individual_id": "cdb766a8d95c",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "cdb766a8d95c",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_615",
+      "attribute_slot": "attr_35",
+      "condition_slot": "condition_3",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.27311474524743407,
+      "total_length": 50000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.7941987869103146,
+      "hedging_level": 2,
+      "info_gap": 0.3486237304619726,
+      "cross_doc_overlap": 0.31376240960643903,
+      "target_attribution": "",
+      "target_difficulty": 0.5555866281057282,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 0.8333333333333334,
+      "target_error_mean_strength": 0.4927311565955262,
+      "non_target_error_leakage": 0.6236830692940799,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.2135919873358368,
+      "hallucination_rate_std": 0.05926078449674655,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.023620237112326,
+      "naturalness_std": 0.1776419664449133,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 79.73,
+        "deepseek-v3.2": 63.45,
+        "ernie-5.0": 67.77
+      },
+      "score_mean": 70.31666666666666,
+      "score_std": 6.885914770182843,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 0,
+      "parent_ids": [
+        "ebe036c7f635"
+      ]
+    }
+  },
+  {
+    "item_id": "190577579319",
+    "source_individual_id": "190577579319",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "190577579319",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[法律政务][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=法律政务, 文档数=3, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_680",
+      "attribute_slot": "attr_56",
+      "condition_slot": "condition_80",
+      "complexity": 3,
+      "domain": "法律政务",
+      "doc_count": 3,
+      "semantic_similarity": 0.49184913762587185,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 30000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.7152949050102748,
+      "hedging_level": 2,
+      "info_gap": 0.40200180722258266,
+      "cross_doc_overlap": 0.4100490344454424,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.6685626210983967,
+      "step_expansion": 5
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.536753938266003,
+      "non_target_error_leakage": 0.6781959436380466,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.2949316061170448,
+      "hallucination_rate_std": 0.07899542218654505,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.151440423307261,
+      "naturalness_std": 0.15702362670213602,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 82.27,
+        "deepseek-v3.2": 66.35,
+        "ernie-5.0": 70.17
+      },
+      "score_mean": 72.92999999999999,
+      "score_std": 6.786005206796313,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 5,
+      "parent_ids": [
+        "0c2f562f2a2f",
+        "9e5ef55395ad"
+      ]
+    }
+  },
+  {
+    "item_id": "677b9775f46e",
+    "source_individual_id": "677b9775f46e",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "677b9775f46e",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_424",
+      "attribute_slot": "attr_24",
+      "condition_slot": "condition_66",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.27311474524743407,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.8228444391419102,
+      "hedging_level": 2,
+      "info_gap": 0.49245147450404947,
+      "cross_doc_overlap": 0.4184447681514414,
+      "target_attribution": "",
+      "target_difficulty": 0.6019579292214042,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.8258201919970526,
+      "non_target_error_leakage": 0.6042610788751789,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.3775796305227743,
+      "hallucination_rate_std": 0.1224297707435982,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.5748186163720654,
+      "naturalness_std": 0.14386593035622366,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 71.59,
+        "deepseek-v3.2": 66.0,
+        "ernie-5.0": 50.51
+      },
+      "score_mean": 62.699999999999996,
+      "score_std": 8.916617445347015,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 2,
+      "parent_ids": [
+        "cdb766a8d95c",
+        "1fc044281f27"
+      ]
+    }
+  },
+  {
+    "item_id": "5e318b976065",
+    "source_individual_id": "5e318b976065",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "5e318b976065",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=7, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_61",
+      "attribute_slot": "attr_26",
+      "condition_slot": "condition_118",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 7,
+      "semantic_similarity": 0.3508921181593302,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.404828851474618,
+      "total_length": 120000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.8319393108548571,
+      "hedging_level": 3,
+      "info_gap": 0.532286136539298,
+      "cross_doc_overlap": 0.4194589792556688,
+      "target_attribution": "",
+      "target_difficulty": 0.6008549770910773,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.8438069011099801,
+      "non_target_error_leakage": 0.6581944193296644,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.33473630829846474,
+      "hallucination_rate_std": 0.11554114872658554,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.405392336475694,
+      "naturalness_std": 0.17111977727513472,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 67.27,
+        "deepseek-v3.2": 61.21,
+        "ernie-5.0": 41.79
+      },
+      "score_mean": 56.75666666666666,
+      "score_std": 10.868355696955982,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "63dc93d21854",
+        "677b9775f46e"
+      ]
+    }
+  },
+  {
+    "item_id": "97a0aa9e2581",
+    "source_individual_id": "97a0aa9e2581",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "97a0aa9e2581",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_338",
+      "attribute_slot": "attr_81",
+      "condition_slot": "condition_52",
+      "complexity": 3,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.41832300455375065,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.5223126721106902,
+      "total_length": 120000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.8800352127485297,
+      "hedging_level": 2,
+      "info_gap": 0.4158505833604851,
+      "cross_doc_overlap": 0.5474799692330284,
+      "target_attribution": "",
+      "target_difficulty": 0.4679719509679727,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 0.5,
+      "target_error_mean_strength": 0.44855702709386747,
+      "non_target_error_leakage": 0.7896914585587506,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.2754621450262023,
+      "hallucination_rate_std": 0.06184034682546001,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.042350827083355,
+      "naturalness_std": 0.22037012709544945,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 71.69,
+        "deepseek-v3.2": 57.16,
+        "ernie-5.0": 62.45
+      },
+      "score_mean": 63.76666666666667,
+      "score_std": 6.004466855785135,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 4,
+      "parent_ids": [
+        "05eb5e390064",
+        "49098bdbeeec"
+      ]
+    }
+  },
+  {
+    "item_id": "8e5adb98dc92",
+    "source_individual_id": "8e5adb98dc92",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "8e5adb98dc92",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_870",
+      "attribute_slot": "attr_92",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.2845732339360893,
+      "shared_entities": 3,
+      "answer_position": "head",
+      "distractor_ratio": 0.1754606156443283,
+      "total_length": 80000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.9556411419260062,
+      "hedging_level": 1,
+      "info_gap": 0.48672544382381533,
+      "cross_doc_overlap": 0.5735545007997659,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.4679719509679727,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6627030358987381,
+      "non_target_error_leakage": 0.627499028758149,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.24357681543307966,
+      "hallucination_rate_std": 0.06947736510759742,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.027567565905017,
+      "naturalness_std": 0.085576191180742,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 79.78,
+        "deepseek-v3.2": 77.81,
+        "ernie-5.0": 72.47
+      },
+      "score_mean": 76.68666666666667,
+      "score_std": 3.088196165329457,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "6c9936b16bbf",
+        "02b150706901"
+      ]
+    }
+  },
+  {
+    "item_id": "f24051cfc773",
+    "source_individual_id": "f24051cfc773",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "f24051cfc773",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[娱乐休闲][生成控制] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=娱乐休闲, 文档数=3, 长度≈15000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_125",
+      "attribute_slot": "attr_2",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "娱乐休闲",
+      "doc_count": 3,
+      "semantic_similarity": 0.6477380976671985,
+      "shared_entities": 2,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 15000,
+      "confusion_pairs": 2,
+      "evidence_clarity": 0.8932625253343052,
+      "hedging_level": 3,
+      "info_gap": 0.4092293493608584,
+      "cross_doc_overlap": 0.33850514598488846,
+      "target_attribution": "",
+      "target_difficulty": 0.6035065266108077,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7372557628124955,
+      "non_target_error_leakage": 0.4965399939808151,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.25566618336773833,
+      "hallucination_rate_std": 0.07495512300063537,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.908447210640366,
+      "naturalness_std": 0.15328736266568282,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 79.7,
+        "deepseek-v3.2": 77.55,
+        "ernie-5.0": 70.6
+      },
+      "score_mean": 75.95,
+      "score_std": 3.8835121561116157,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 3,
+      "parent_ids": [
+        "b96f65986106",
+        "20d2751ea7b6"
+      ]
+    }
+  },
+  {
+    "item_id": "2d70a1b6d0ed",
+    "source_individual_id": "2d70a1b6d0ed",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "2d70a1b6d0ed",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=9, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_615",
+      "attribute_slot": "attr_35",
+      "condition_slot": "condition_3",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 9,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "head",
+      "distractor_ratio": 0.2697158471041028,
+      "total_length": 50000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.775659080006558,
+      "hedging_level": 3,
+      "info_gap": 0.5821108197784592,
+      "cross_doc_overlap": 0.31224595506608455,
+      "target_attribution": "",
+      "target_difficulty": 0.42767048634637495,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6355627622520238,
+      "non_target_error_leakage": 0.7105824723991314,
+      "dominant_error_match_rate": 0.5,
+      "average_hallucination_rate": 0.31262944128816555,
+      "hallucination_rate_std": 0.10179156215636886,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.156661838446255,
+      "naturalness_std": 0.09294484915364207,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 82.95,
+        "deepseek-v3.2": 64.6,
+        "ernie-5.0": 52.94
+      },
+      "score_mean": 66.83,
+      "score_std": 12.352589472117444,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 4,
+      "parent_ids": [
+        "cdb766a8d95c",
+        "0439281a44de"
+      ]
+    }
+  },
+  {
+    "item_id": "35cc4060ead7",
+    "source_individual_id": "35cc4060ead7",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "35cc4060ead7",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[法律政务][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=法律政务, 文档数=3, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_991",
+      "attribute_slot": "attr_80",
+      "condition_slot": "condition_51",
+      "complexity": 1,
+      "domain": "法律政务",
+      "doc_count": 3,
+      "semantic_similarity": 0.49184913762587185,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 30000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.3948874827183401,
+      "hedging_level": 3,
+      "info_gap": 0.5910987433697453,
+      "cross_doc_overlap": 0.318898037723906,
+      "target_attribution": "",
+      "target_difficulty": 0.5695167081566248,
+      "step_expansion": 5
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7828810501574996,
+      "non_target_error_leakage": 0.7225262567707222,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.43515054027169997,
+      "hallucination_rate_std": 0.12149707678257474,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.415577996520154,
+      "naturalness_std": 0.21321146342200484,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 71.7,
+        "deepseek-v3.2": 60.9,
+        "ernie-5.0": 42.49
+      },
+      "score_mean": 58.36333333333334,
+      "score_std": 12.059077724086347,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "aaf00cc7f1b8",
+        "190577579319"
+      ]
+    }
+  },
+  {
+    "item_id": "a4833e5e9ad3",
+    "source_individual_id": "a4833e5e9ad3",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "a4833e5e9ad3",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[教育考试][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=教育考试, 文档数=1, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_870",
+      "attribute_slot": "attr_92",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "教育考试",
+      "doc_count": 1,
+      "semantic_similarity": 0.4309338016238475,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 30000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.7301800336624118,
+      "hedging_level": 2,
+      "info_gap": 0.48424134755268544,
+      "cross_doc_overlap": 0.36769807356136713,
+      "target_attribution": "",
+      "target_difficulty": 0.6942250705257029,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.8265614903828515,
+      "non_target_error_leakage": 0.6162399840853301,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.3141405465689947,
+      "hallucination_rate_std": 0.11553770270884747,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.5419084938439807,
+      "naturalness_std": 0.15753652529600962,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 79.58,
+        "deepseek-v3.2": 63.18,
+        "ernie-5.0": 49.03
+      },
+      "score_mean": 63.93,
+      "score_std": 12.483255451470447,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "b1256ba2a866",
+        "0439281a44de"
+      ]
+    }
+  },
+  {
+    "item_id": "434ac67dfca0",
+    "source_individual_id": "434ac67dfca0",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "434ac67dfca0",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_703",
+      "attribute_slot": "attr_25",
+      "condition_slot": "condition_72",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3508921181593302,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.404828851474618,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.36971606897490605,
+      "hedging_level": 3,
+      "info_gap": 0.47157314240751924,
+      "cross_doc_overlap": 0.4107873403246504,
+      "target_attribution": "",
+      "target_difficulty": 0.5652028410733749,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6791887905866542,
+      "non_target_error_leakage": 0.7297473754529201,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.36283845675067306,
+      "hallucination_rate_std": 0.09763474426332101,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.781665702538381,
+      "naturalness_std": 0.1770668689052484,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 71.37,
+        "deepseek-v3.2": 66.62,
+        "ernie-5.0": 53.9
+      },
+      "score_mean": 63.96333333333334,
+      "score_std": 7.37534782607272,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 3,
+      "parent_ids": [
+        "6e0fd7178475",
+        "e146537675a6"
+      ]
+    }
+  },
+  {
+    "item_id": "6395f2a3051d",
+    "source_individual_id": "6395f2a3051d",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "缺证断言",
+    "prototype_id": "6395f2a3051d",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[教育考试][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=教育考试, 文档数=1, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_431",
+      "attribute_slot": "attr_64",
+      "condition_slot": "condition_149",
+      "complexity": 3,
+      "domain": "教育考试",
+      "doc_count": 1,
+      "semantic_similarity": 0.38374829070445715,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.25759936055340715,
+      "total_length": 80000,
+      "confusion_pairs": 2,
+      "evidence_clarity": 0.34913861967005283,
+      "hedging_level": 2,
+      "info_gap": 0.37708071708870733,
+      "cross_doc_overlap": 0.5069722942020098,
+      "target_attribution": "",
+      "target_difficulty": 0.4245754882493487,
+      "step_expansion": 1
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "缺证断言",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 0.8333333333333334,
+      "target_error_mean_strength": 0.4830329867385217,
+      "non_target_error_leakage": 0.7327175779410763,
+      "dominant_error_match_rate": 0.16666666666666666,
+      "average_hallucination_rate": 0.2614476606823796,
+      "hallucination_rate_std": 0.10377848469931614,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.084064554398249,
+      "naturalness_std": 0.23018360373754304,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 85.2,
+        "deepseek-v3.2": 80.67,
+        "ernie-5.0": 71.41
+      },
+      "score_mean": 79.09333333333333,
+      "score_std": 5.7390727086834845,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `缺证断言` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "缺证断言",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 4,
+      "parent_ids": [
+        "7d6f434f6f50",
+        "ab967e6f9fe5"
+      ]
+    }
+  },
+  {
+    "item_id": "7d914184d1ae",
+    "source_individual_id": "7d914184d1ae",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "7d914184d1ae",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_603",
+      "attribute_slot": "attr_9",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.2845732339360893,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.1754606156443283,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.5009396767561809,
+      "hedging_level": 3,
+      "info_gap": 0.3906508591143616,
+      "cross_doc_overlap": 0.6156467560698674,
+      "target_attribution": "",
+      "target_difficulty": 0.7296648727546535,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7923554702217454,
+      "non_target_error_leakage": 0.6929117357648044,
+      "dominant_error_match_rate": 0.5,
+      "average_hallucination_rate": 0.4195229745533382,
+      "hallucination_rate_std": 0.12526417798240128,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.4391699916597176,
+      "naturalness_std": 0.17456372630378025,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 76.91,
+        "deepseek-v3.2": 57.99,
+        "ernie-5.0": 40.94
+      },
+      "score_mean": 58.61333333333334,
+      "score_std": 14.691304306365115,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "fde9f8cee898",
+        "6c9936b16bbf"
+      ]
+    }
+  },
+  {
+    "item_id": "a6c0b24484ae",
+    "source_individual_id": "a6c0b24484ae",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "a6c0b24484ae",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_258",
+      "attribute_slot": "attr_52",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.41832300455375065,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.5223126721106902,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.9022945888590623,
+      "hedging_level": 3,
+      "info_gap": 0.49525359735264396,
+      "cross_doc_overlap": 0.5819137925120279,
+      "target_attribution": "",
+      "target_difficulty": 0.46584107552090703,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6685106637266456,
+      "non_target_error_leakage": 0.7203218616195205,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.31314095509170786,
+      "hallucination_rate_std": 0.12479607222333969,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.88607665212713,
+      "naturalness_std": 0.16698512077217575,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 81.72,
+        "deepseek-v3.2": 61.44,
+        "ernie-5.0": 54.37
+      },
+      "score_mean": 65.84333333333333,
+      "score_std": 11.591595614447948,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "97a0aa9e2581",
+        "46afefb12af3"
+      ]
+    }
+  },
+  {
+    "item_id": "ae3fd22f02c6",
+    "source_individual_id": "ae3fd22f02c6",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误拼接",
+    "prototype_id": "ae3fd22f02c6",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_697",
+      "attribute_slot": "attr_33",
+      "condition_slot": "condition_93",
+      "complexity": 3,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.30752204802597427,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.422989154307174,
+      "total_length": 120000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.9074878307612535,
+      "hedging_level": 1,
+      "info_gap": 0.4757132015647234,
+      "cross_doc_overlap": 0.6149752742717843,
+      "target_attribution": "",
+      "target_difficulty": 0.48792153289513657,
+      "step_expansion": 4
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误拼接",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 0.6666666666666666,
+      "target_error_mean_strength": 0.46570676213980106,
+      "non_target_error_leakage": 0.708332005497653,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.2478462240960976,
+      "hallucination_rate_std": 0.09189281265846236,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.902420853563774,
+      "naturalness_std": 0.2267972188543071,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 90.89,
+        "deepseek-v3.2": 66.98,
+        "ernie-5.0": 72.28
+      },
+      "score_mean": 76.71666666666667,
+      "score_std": 10.252968133938364,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误拼接` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误拼接",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "97a0aa9e2581",
+        "c66f2f8b2c4a"
+      ]
+    }
+  },
+  {
+    "item_id": "06025905cbaa",
+    "source_individual_id": "06025905cbaa",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "06025905cbaa",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=9, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_456",
+      "attribute_slot": "attr_24",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 9,
+      "semantic_similarity": 0.4061874062225037,
+      "shared_entities": 4,
+      "answer_position": "head",
+      "distractor_ratio": 0.2697158471041028,
+      "total_length": 50000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.3715279326282866,
+      "hedging_level": 3,
+      "info_gap": 0.268988798122021,
+      "cross_doc_overlap": 0.6139144015224918,
+      "target_attribution": "",
+      "target_difficulty": 0.8215319966184369,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6933019953097571,
+      "non_target_error_leakage": 0.7112643436858056,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.31990502222574285,
+      "hallucination_rate_std": 0.10399952319310389,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.8952718456821707,
+      "naturalness_std": 0.1526707304128494,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 78.87,
+        "deepseek-v3.2": 63.7,
+        "ernie-5.0": 59.21
+      },
+      "score_mean": 67.26,
+      "score_std": 8.411662538800917,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "fde9f8cee898",
+        "ae9b7cf022ec"
+      ]
+    }
+  },
+  {
+    "item_id": "0d26bc75d4cf",
+    "source_individual_id": "0d26bc75d4cf",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "0d26bc75d4cf",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[教育考试][文档整合] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=教育考试, 文档数=1, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_870",
+      "attribute_slot": "attr_92",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "教育考试",
+      "doc_count": 1,
+      "semantic_similarity": 0.38374829070445715,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.25759936055340715,
+      "total_length": 80000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.4314657303048327,
+      "hedging_level": 3,
+      "info_gap": 0.2954595091629041,
+      "cross_doc_overlap": 0.5268062687306687,
+      "target_attribution": "",
+      "target_difficulty": 0.7262779650861562,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6674935747938262,
+      "non_target_error_leakage": 0.7409881040247601,
+      "dominant_error_match_rate": 0.5,
+      "average_hallucination_rate": 0.3315796984714007,
+      "hallucination_rate_std": 0.10199409609153456,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.109755468928928,
+      "naturalness_std": 0.14060524332226804,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 75.61,
+        "deepseek-v3.2": 60.91,
+        "ernie-5.0": 57.34
+      },
+      "score_mean": 64.62,
+      "score_std": 7.906592186270896,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "0439281a44de",
+        "fde9f8cee898"
+      ]
+    }
+  },
+  {
+    "item_id": "15d0ea3f4cfe",
+    "source_individual_id": "15d0ea3f4cfe",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "15d0ea3f4cfe",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[法律政务][信息定位] 模拟问题 (复杂度2)",
+    "context": "[模拟上下文] 领域=法律政务, 文档数=3, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "信息定位",
+      "entity_slot": "entity_853",
+      "attribute_slot": "attr_39",
+      "condition_slot": "",
+      "complexity": 2,
+      "domain": "法律政务",
+      "doc_count": 3,
+      "semantic_similarity": 0.7833657065126849,
+      "shared_entities": 1,
+      "answer_position": "head",
+      "distractor_ratio": 0.17226535783001168,
+      "total_length": 120000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.7931876375466873,
+      "hedging_level": 2,
+      "info_gap": 0.3536466259575527,
+      "cross_doc_overlap": 0.42878025684574816,
+      "target_attribution": "",
+      "target_difficulty": 0.7600985080880273,
+      "step_expansion": 1
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.5260841105995037,
+      "non_target_error_leakage": 0.5983811267193219,
+      "dominant_error_match_rate": 0.6666666666666666,
+      "average_hallucination_rate": 0.2714488710828908,
+      "hallucination_rate_std": 0.08456423554129272,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.043511575723951,
+      "naturalness_std": 0.173127003659319,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 74.61,
+        "deepseek-v3.2": 77.68,
+        "ernie-5.0": 62.98
+      },
+      "score_mean": 71.75666666666667,
+      "score_std": 6.331331262503613,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 3,
+      "parent_ids": [
+        "5b2f7e922b47",
+        "510ec7055813"
+      ]
+    }
+  },
+  {
+    "item_id": "6440177583ba",
+    "source_individual_id": "6440177583ba",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "6440177583ba",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[娱乐休闲][信息定位] 模拟问题 (复杂度2)",
+    "context": "[模拟上下文] 领域=娱乐休闲, 文档数=3, 长度≈15000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "信息定位",
+      "entity_slot": "entity_853",
+      "attribute_slot": "attr_39",
+      "condition_slot": "",
+      "complexity": 2,
+      "domain": "娱乐休闲",
+      "doc_count": 3,
+      "semantic_similarity": 0.5893196432576107,
+      "shared_entities": 1,
+      "answer_position": "mid",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 15000,
+      "confusion_pairs": 2,
+      "evidence_clarity": 0.9353011120293404,
+      "hedging_level": 3,
+      "info_gap": 0.33156434627559017,
+      "cross_doc_overlap": 0.4338948693623472,
+      "target_attribution": "",
+      "target_difficulty": 0.7600985080880273,
+      "step_expansion": 1
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7302620557643822,
+      "non_target_error_leakage": 0.42403299098686636,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.22125502116006712,
+      "hallucination_rate_std": 0.07307022838220793,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.113105307856693,
+      "naturalness_std": 0.1737322843120296,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 81.25,
+        "deepseek-v3.2": 79.88,
+        "ernie-5.0": 66.05
+      },
+      "score_mean": 75.72666666666667,
+      "score_std": 6.865257136885374,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 4,
+      "parent_ids": [
+        "15d0ea3f4cfe",
+        "f24051cfc773"
+      ]
+    }
+  },
+  {
+    "item_id": "9e5ef55395ad",
+    "source_individual_id": "9e5ef55395ad",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "9e5ef55395ad",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_79",
+      "attribute_slot": "attr_41",
+      "condition_slot": "condition_183",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3508921181593302,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.404828851474618,
+      "total_length": 120000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.7219061792348659,
+      "hedging_level": 3,
+      "info_gap": 0.3866553895842829,
+      "cross_doc_overlap": 0.42760917312420277,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.6238258148390692,
+      "step_expansion": 4
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6848398786374222,
+      "non_target_error_leakage": 0.5475716038135483,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.3302671272139509,
+      "hallucination_rate_std": 0.11380965669005076,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.046545501698694,
+      "naturalness_std": 0.09753295347937095,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 77.74,
+        "deepseek-v3.2": 69.09,
+        "ernie-5.0": 66.2
+      },
+      "score_mean": 71.01,
+      "score_std": 4.90290390143093,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 3,
+      "parent_ids": [
+        "32bfbcaa6530",
+        "49098bdbeeec"
+      ]
+    }
+  },
+  {
+    "item_id": "aa5f771bf708",
+    "source_individual_id": "aa5f771bf708",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "缺证断言",
+    "prototype_id": "aa5f771bf708",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[教育考试][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=教育考试, 文档数=1, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_763",
+      "attribute_slot": "attr_52",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "教育考试",
+      "doc_count": 1,
+      "semantic_similarity": 0.38374829070445715,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.25759936055340715,
+      "total_length": 80000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.2777692487891516,
+      "hedging_level": 2,
+      "info_gap": 0.30918727694699966,
+      "cross_doc_overlap": 0.3111170897539431,
+      "target_attribution": "",
+      "target_difficulty": 0.6532843856469164,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "缺证断言",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 0.8333333333333334,
+      "target_error_mean_strength": 0.5039808844011048,
+      "non_target_error_leakage": 0.7197641281956497,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.2956191503245496,
+      "hallucination_rate_std": 0.09807685278608454,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.039869451313815,
+      "naturalness_std": 0.17414589605235511,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 81.86,
+        "deepseek-v3.2": 67.49,
+        "ernie-5.0": 62.34
+      },
+      "score_mean": 70.56333333333333,
+      "score_std": 8.260009416190488,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `缺证断言` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "缺证断言",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 3,
+      "parent_ids": [
+        "6e0fd7178475",
+        "e146537675a6"
+      ]
+    }
+  },
+  {
+    "item_id": "2cbfd609a534",
+    "source_individual_id": "2cbfd609a534",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "2cbfd609a534",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[传统行业][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=传统行业, 文档数=1, 长度≈30000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_181",
+      "attribute_slot": "attr_16",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "传统行业",
+      "doc_count": 1,
+      "semantic_similarity": 0.4188046788291499,
+      "shared_entities": 3,
+      "answer_position": "tail",
+      "distractor_ratio": 0.26404039727719,
+      "total_length": 30000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.4547497395594916,
+      "hedging_level": 3,
+      "info_gap": 0.294193881854889,
+      "cross_doc_overlap": 0.4104101289011565,
+      "target_attribution": "",
+      "target_difficulty": 0.6942250705257029,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6345854678621127,
+      "non_target_error_leakage": 0.6392266211631643,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.29398968476176185,
+      "hallucination_rate_std": 0.09228747229306694,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.004123149263902,
+      "naturalness_std": 0.1260310123497382,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 84.44,
+        "deepseek-v3.2": 68.9,
+        "ernie-5.0": 62.15
+      },
+      "score_mean": 71.83,
+      "score_std": 9.332727361280837,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 3,
+      "parent_ids": [
+        "6e0fd7178475",
+        "3ee98b338080"
+      ]
+    }
+  },
+  {
+    "item_id": "e146537675a6",
+    "source_individual_id": "e146537675a6",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "e146537675a6",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_852",
+      "attribute_slot": "attr_31",
+      "condition_slot": "condition_103",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3508921181593302,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.404828851474618,
+      "total_length": 120000,
+      "confusion_pairs": 3,
+      "evidence_clarity": 0.2777692487891516,
+      "hedging_level": 2,
+      "info_gap": 0.30918727694699966,
+      "cross_doc_overlap": 0.3111170897539431,
+      "target_attribution": "",
+      "target_difficulty": 0.4969782306142445,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 0.8333333333333334,
+      "target_error_mean_strength": 0.46608681929563317,
+      "non_target_error_leakage": 0.7344120369055487,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.315563852174011,
+      "hallucination_rate_std": 0.09917134007609923,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.917145441468216,
+      "naturalness_std": 0.0704794351970795,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 75.39,
+        "deepseek-v3.2": 69.35,
+        "ernie-5.0": 60.82
+      },
+      "score_mean": 68.52,
+      "score_std": 5.9770617084539674,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 2,
+      "parent_ids": [
+        "269f95b13ea1",
+        "0762e5edc666"
+      ]
+    }
+  },
+  {
+    "item_id": "0f20e06c9ce2",
+    "source_individual_id": "0f20e06c9ce2",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "0f20e06c9ce2",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[娱乐休闲][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=娱乐休闲, 文档数=3, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_680",
+      "attribute_slot": "attr_56",
+      "condition_slot": "condition_80",
+      "complexity": 3,
+      "domain": "娱乐休闲",
+      "doc_count": 3,
+      "semantic_similarity": 0.49184913762587185,
+      "shared_entities": 4,
+      "answer_position": "tail",
+      "distractor_ratio": 0.23484674441950557,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.6596604527342638,
+      "hedging_level": 1,
+      "info_gap": 0.45830534032393,
+      "cross_doc_overlap": 0.4392561748631801,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.5532687639790385,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6748783230742094,
+      "non_target_error_leakage": 0.5168043931132674,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.31162499655628273,
+      "hallucination_rate_std": 0.09691746678359768,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.101878205911185,
+      "naturalness_std": 0.09820512749604983,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 78.04,
+        "deepseek-v3.2": 73.78,
+        "ernie-5.0": 64.37
+      },
+      "score_mean": 72.06333333333333,
+      "score_std": 5.711242324476251,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "aaf00cc7f1b8",
+        "190577579319"
+      ]
+    }
+  },
+  {
+    "item_id": "7fc78802d5a8",
+    "source_individual_id": "7fc78802d5a8",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "7fc78802d5a8",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[家居生活][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=家居生活, 文档数=2, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_115",
+      "attribute_slot": "attr_72",
+      "condition_slot": "condition_17",
+      "complexity": 3,
+      "domain": "家居生活",
+      "doc_count": 2,
+      "semantic_similarity": 0.30752204802597427,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.422989154307174,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.6320228507672728,
+      "hedging_level": 0,
+      "info_gap": 0.5434264114736895,
+      "cross_doc_overlap": 0.2790379906134894,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.4773019469544464,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6289089091865904,
+      "non_target_error_leakage": 0.5702757554217933,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.2384661720545246,
+      "hallucination_rate_std": 0.07600232014862876,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.010497166399019,
+      "naturalness_std": 0.17106115921100856,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 91.1,
+        "deepseek-v3.2": 73.14,
+        "ernie-5.0": 63.73
+      },
+      "score_mean": 75.99,
+      "score_std": 11.354033057317855,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "05245ac67465",
+        "2add143b3a1c"
+      ]
+    }
+  },
+  {
+    "item_id": "18e2ec554aa7",
+    "source_individual_id": "18e2ec554aa7",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "18e2ec554aa7",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_773",
+      "attribute_slot": "attr_55",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.4808467092100647,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.40091457650919204,
+      "total_length": 50000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.8182969021275782,
+      "hedging_level": 1,
+      "info_gap": 0.5563545628625279,
+      "cross_doc_overlap": 0.32850937751372034,
+      "target_attribution": "",
+      "target_difficulty": 0.42767048634637495,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7902207412966304,
+      "non_target_error_leakage": 0.541708166701928,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.33877078614147177,
+      "hallucination_rate_std": 0.0987189603332546,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.604298146511603,
+      "naturalness_std": 0.1468770111623428,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 79.33,
+        "deepseek-v3.2": 69.65,
+        "ernie-5.0": 48.03
+      },
+      "score_mean": 65.67,
+      "score_std": 13.084413118923854,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "0439281a44de",
+        "fde9f8cee898"
+      ]
+    }
+  },
+  {
+    "item_id": "53d56c3caaf7",
+    "source_individual_id": "53d56c3caaf7",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "确定性膨胀",
+    "prototype_id": "53d56c3caaf7",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=8, 长度≈120000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_693",
+      "attribute_slot": "attr_94",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 8,
+      "semantic_similarity": 0.3508921181593302,
+      "shared_entities": 3,
+      "answer_position": "mid",
+      "distractor_ratio": 0.404828851474618,
+      "total_length": 120000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.6420393637909958,
+      "hedging_level": 3,
+      "info_gap": 0.42970133866089766,
+      "cross_doc_overlap": 0.4321123480395904,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.7573945013554186,
+      "step_expansion": 4
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "确定性膨胀",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7282507154920097,
+      "non_target_error_leakage": 0.6482323506950755,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.3004045338227909,
+      "hallucination_rate_std": 0.06312598525650011,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.017093222810692,
+      "naturalness_std": 0.18853229696520374,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 73.13,
+        "deepseek-v3.2": 59.47,
+        "ernie-5.0": 51.09
+      },
+      "score_mean": 61.23,
+      "score_std": 9.083450152154004,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `确定性膨胀` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "确定性膨胀",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "fde9f8cee898",
+        "9e5ef55395ad"
+      ]
+    }
+  },
+  {
+    "item_id": "748e0a35b6e1",
+    "source_individual_id": "748e0a35b6e1",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "748e0a35b6e1",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=9, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_615",
+      "attribute_slot": "attr_35",
+      "condition_slot": "condition_3",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 9,
+      "semantic_similarity": 0.5055264156576282,
+      "shared_entities": 3,
+      "answer_position": "head",
+      "distractor_ratio": 0.12060373987944656,
+      "total_length": 80000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.7908238714589636,
+      "hedging_level": 3,
+      "info_gap": 0.5243550883229499,
+      "cross_doc_overlap": 0.3581213744072519,
+      "target_attribution": "",
+      "target_difficulty": 0.5555866281057282,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6246607719637788,
+      "non_target_error_leakage": 0.7050670351029833,
+      "dominant_error_match_rate": 0.3333333333333333,
+      "average_hallucination_rate": 0.36046072875414614,
+      "hallucination_rate_std": 0.1302908047361148,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.098749180486558,
+      "naturalness_std": 0.1888024232201434,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 78.02,
+        "deepseek-v3.2": 63.28,
+        "ernie-5.0": 45.96
+      },
+      "score_mean": 62.419999999999995,
+      "score_std": 13.102559546388889,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：自动判定的主导错误类型与目标错误类型不一致",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "cdb766a8d95c",
+        "2d70a1b6d0ed"
+      ]
+    }
+  },
+  {
+    "item_id": "88c480cffd52",
+    "source_individual_id": "88c480cffd52",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "88c480cffd52",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][生成控制] 模拟问题 (复杂度1)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=9, 长度≈50000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "生成控制",
+      "entity_slot": "entity_140",
+      "attribute_slot": "attr_12",
+      "condition_slot": "",
+      "complexity": 1,
+      "domain": "健康医疗",
+      "doc_count": 9,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "head",
+      "distractor_ratio": 0.2697158471041028,
+      "total_length": 50000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.7891978196796962,
+      "hedging_level": 2,
+      "info_gap": 0.507764669074481,
+      "cross_doc_overlap": 0.6071372028157497,
+      "target_attribution": "引用错误",
+      "target_difficulty": 0.3844268115008912,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6631152466570692,
+      "non_target_error_leakage": 0.7076847793295223,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.33304824505167296,
+      "hallucination_rate_std": 0.11990994184640379,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.8992678259026694,
+      "naturalness_std": 0.22630416786315527,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 74.33,
+        "deepseek-v3.2": 66.54,
+        "ernie-5.0": 54.16
+      },
+      "score_mean": 65.01,
+      "score_std": 8.305134957763581,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "13dd4cf21aa7",
+        "2d70a1b6d0ed"
+      ]
+    }
+  },
+  {
+    "item_id": "e8be0adb8cd7",
+    "source_individual_id": "e8be0adb8cd7",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "e8be0adb8cd7",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[健康医疗][文档整合] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=健康医疗, 文档数=9, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "文档整合",
+      "entity_slot": "entity_568",
+      "attribute_slot": "attr_25",
+      "condition_slot": "",
+      "complexity": 3,
+      "domain": "健康医疗",
+      "doc_count": 9,
+      "semantic_similarity": 0.3898253294860857,
+      "shared_entities": 3,
+      "answer_position": "head",
+      "distractor_ratio": 0.2697158471041028,
+      "total_length": 80000,
+      "confusion_pairs": 4,
+      "evidence_clarity": 0.7779358519777777,
+      "hedging_level": 2,
+      "info_gap": 0.5351312586736059,
+      "cross_doc_overlap": 0.30461679066400793,
+      "target_attribution": "",
+      "target_difficulty": 0.5027806365698662,
+      "step_expansion": 2
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.6450211597014991,
+      "non_target_error_leakage": 0.6422230287889369,
+      "dominant_error_match_rate": 0.8333333333333334,
+      "average_hallucination_rate": 0.2989525687626195,
+      "hallucination_rate_std": 0.09851803511393134,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 4.06733039231711,
+      "naturalness_std": 0.25740687536446694,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 87.97,
+        "deepseek-v3.2": 70.61,
+        "ernie-5.0": 54.2
+      },
+      "score_mean": 70.92666666666666,
+      "score_std": 13.788363048438908,
+      "difficulty_bucket": "easy",
+      "recommended_for_release": false
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "b1256ba2a866",
+        "76dab40ad0af"
+      ]
+    }
+  },
+  {
+    "item_id": "de35ac423f0e",
+    "source_individual_id": "de35ac423f0e",
+    "created_at": "2026-03-16T03:58:00+00:00",
+    "scenario_type": "static",
+    "target_error_type": "错误匹配",
+    "prototype_id": "de35ac423f0e",
+    "paired_group_id": "",
+    "prompt_template_id": "",
+    "knowledge_cutoff": "",
+    "context_timestamp": "",
+    "query": "[法律政务][边界感知] 模拟问题 (复杂度3)",
+    "context": "[模拟上下文] 领域=法律政务, 文档数=1, 长度≈80000",
+    "reference_answer": "[模拟标准答案]",
+    "gene_vector": {
+      "task_type": "边界感知",
+      "entity_slot": "entity_103",
+      "attribute_slot": "attr_11",
+      "condition_slot": "condition_29",
+      "complexity": 3,
+      "domain": "法律政务",
+      "doc_count": 1,
+      "semantic_similarity": 0.38374829070445715,
+      "shared_entities": 2,
+      "answer_position": "mid",
+      "distractor_ratio": 0.25759936055340715,
+      "total_length": 80000,
+      "confusion_pairs": 5,
+      "evidence_clarity": 0.7392036310608785,
+      "hedging_level": 2,
+      "info_gap": 0.4781065748304276,
+      "cross_doc_overlap": 0.4317025116146599,
+      "target_attribution": "",
+      "target_difficulty": 0.7497322107097639,
+      "step_expansion": 3
+    },
+    "validation_stats": {
+      "validation_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "repeats_per_model": 2,
+      "target_error_type": "错误匹配",
+      "target_trigger_threshold": 0.4,
+      "target_error_trigger_rate": 1.0,
+      "target_error_mean_strength": 0.7606224896819344,
+      "non_target_error_leakage": 0.6201227095748106,
+      "dominant_error_match_rate": 1.0,
+      "average_hallucination_rate": 0.3744813740906208,
+      "hallucination_rate_std": 0.10550026794867876,
+      "answerability_rate": 1.0,
+      "naturalness_mean": 3.6085732877246985,
+      "naturalness_std": 0.07243570353389113,
+      "sample_count": 6
+    },
+    "calibration_stats": {
+      "anchor_models": [
+        "gpt-5.2",
+        "deepseek-v3.2",
+        "ernie-5.0"
+      ],
+      "anchor_scores": {
+        "gpt-5.2": 73.56,
+        "deepseek-v3.2": 59.8,
+        "ernie-5.0": 44.84
+      },
+      "score_mean": 59.4,
+      "score_std": 11.728301951547234,
+      "difficulty_bucket": "medium",
+      "recommended_for_release": true
+    },
+    "human_review": {
+      "status": "needs_review",
+      "required_checks": [
+        "确认 reference_answer 严格由 context 支撑，没有引入外部事实",
+        "确认 query 像真实用户问题，而不是为了诱导错误而写得过于人工",
+        "确认目标错误类型 `错误匹配` 标注正确，且不是由其他错误类型主导",
+        "人工复核：该题对非目标错误类型的诱导过强，需要检查是否属于混合题"
+      ],
+      "reviewer": "",
+      "notes": "",
+      "labeled_target_error_type": "错误匹配",
+      "labeled_scenario_type": "static"
+    },
+    "metadata": {
+      "generation": 8,
+      "parent_ids": [
+        "97a0aa9e2581",
+        "46afefb12af3"
+      ]
+    }
+  }
+]
