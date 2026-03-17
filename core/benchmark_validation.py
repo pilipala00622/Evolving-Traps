@@ -14,9 +14,14 @@ from typing import Dict, Iterable, List, Optional
 from core.benchmark_schema import (
     BenchmarkItem,
     CalibrationStats,
+    EvaluationRecord,
     HumanReviewState,
+    ReleaseRecord,
+    SourceRecord,
     ValidationStats,
     build_default_review_checks,
+    build_fixed_evaluation_metrics,
+    build_release_record,
     build_review_role_responsibilities,
     utc_now_iso,
 )
@@ -61,6 +66,8 @@ class BenchmarkValidator:
         *,
         target_error_type: Optional[str] = None,
         scenario_type: str = "static",
+        scoring_mode: str = "reference_answer",
+        reference_answer_applicable: bool = True,
         prototype_id: str = "",
         paired_group_id: str = "",
         prompt_template_id: str = "",
@@ -126,14 +133,17 @@ class BenchmarkValidator:
             scenario_type=scenario_type,
             target_error_type=target_error_type,
             validation_stats=validation_stats,
+            scoring_mode=scoring_mode,
+            reference_answer_applicable=reference_answer_applicable,
         )
 
-        return BenchmarkItem(
+        source_record = SourceRecord(
             item_id=individual.id,
             source_individual_id=individual.id,
             created_at=utc_now_iso(),
             scenario_type=scenario_type,
             target_error_type=target_error_type,
+            intended_failure_mode=target_error_type,
             prototype_id=prototype_id,
             paired_group_id=paired_group_id,
             prompt_template_id=prompt_template_id,
@@ -143,9 +153,40 @@ class BenchmarkValidator:
             context=individual.context_text,
             reference_answer=individual.reference_answer,
             gene_vector=individual.get_gene_vector(),
+            metadata=metadata or {},
+        )
+        evaluation_record = EvaluationRecord(
+            scoring_mode=scoring_mode,
+            reference_answer_applicable=reference_answer_applicable,
+            validation_stats=validation_stats,
+            fixed_metrics=build_fixed_evaluation_metrics(validation_stats=validation_stats),
+        )
+        release_record = build_release_record(
+            review_state=review_state,
+            evaluation_record=evaluation_record,
+        )
+
+        return BenchmarkItem(
+            item_id=individual.id,
+            source_individual_id=individual.id,
+            created_at=source_record.created_at,
+            scenario_type=scenario_type,
+            target_error_type=target_error_type,
+            prototype_id=prototype_id,
+            paired_group_id=paired_group_id,
+            prompt_template_id=prompt_template_id,
+            knowledge_cutoff=knowledge_cutoff,
+            context_timestamp=context_timestamp,
+            query=source_record.query,
+            context=source_record.context,
+            reference_answer=source_record.reference_answer,
+            gene_vector=source_record.gene_vector,
             validation_stats=validation_stats,
             human_review=review_state,
-            metadata=metadata or {},
+            metadata=source_record.metadata,
+            source_record=source_record,
+            evaluation_record=evaluation_record,
+            release_record=release_record,
         )
 
     def _build_review_state(
@@ -154,6 +195,8 @@ class BenchmarkValidator:
         scenario_type: str,
         target_error_type: str,
         validation_stats: ValidationStats,
+        scoring_mode: str,
+        reference_answer_applicable: bool,
     ) -> HumanReviewState:
         has_target_mismatch = validation_stats.dominant_error_match_rate < 0.5
         high_leakage = validation_stats.non_target_error_leakage > self.max_non_target_leakage
@@ -162,6 +205,7 @@ class BenchmarkValidator:
             target_error_type=target_error_type,
             has_target_mismatch=has_target_mismatch,
             high_leakage=high_leakage,
+            reference_answer_applicable=reference_answer_applicable,
         )
 
         if (
@@ -176,8 +220,11 @@ class BenchmarkValidator:
 
         return HumanReviewState(
             status=status,
+            scoring_mode=scoring_mode,
+            reference_answer_applicable=reference_answer_applicable,
             required_checks=checks,
             role_responsibilities=build_review_role_responsibilities(scenario_type),
+            labeled_intended_failure_mode=target_error_type,
             labeled_target_error_type=target_error_type,
             labeled_scenario_type=scenario_type,
         )
@@ -204,7 +251,7 @@ class BenchmarkCalibrator:
         difficulty_bucket = self._bucketize(mean_score)
         recommended = 40.0 <= mean_score <= 60.0 and std_score <= 20.0
 
-        return CalibrationStats(
+        calibration = CalibrationStats(
             anchor_models=list(self.anchor_models),
             anchor_scores=scores,
             score_mean=mean_score,
@@ -212,6 +259,17 @@ class BenchmarkCalibrator:
             difficulty_bucket=difficulty_bucket,
             recommended_for_release=recommended,
         )
+        item.calibration_stats = calibration
+        item.evaluation_record.calibration_stats = calibration
+        item.evaluation_record.fixed_metrics = build_fixed_evaluation_metrics(
+            validation_stats=item.validation_stats,
+            calibration_stats=calibration,
+        )
+        item.release_record = build_release_record(
+            review_state=item.human_review,
+            evaluation_record=item.evaluation_record,
+        )
+        return calibration
 
     def _bucketize(self, score_mean: float) -> str:
         if score_mean < 35:

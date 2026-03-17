@@ -17,15 +17,18 @@ from core.agent_specs import (
 
 def build_ground_truth_final_state(item: Dict[str, object]) -> Dict[str, object]:
     metadata = item.get("metadata", {})
-    return {
+    evaluation = item.get("evaluation_record", {})
+    final_state = {
         "task_id": item.get("item_id", ""),
         "target_error_type": item.get("target_error_type", ""),
         "scenario_type": item.get("scenario_type", ""),
-        "reference_answer": item.get("reference_answer", ""),
         "domain": item.get("gene_vector", {}).get("domain", ""),
         "task_type": item.get("gene_vector", {}).get("task_type", ""),
         "plan_id": metadata.get("plan_id", ""),
     }
+    if evaluation.get("reference_answer_applicable", True):
+        final_state["reference_answer"] = item.get("reference_answer", "")
+    return final_state
 
 
 def build_tool_schema(item: Dict[str, object]) -> List[Dict[str, object]]:
@@ -51,6 +54,8 @@ def build_tool_schema(item: Dict[str, object]) -> List[Dict[str, object]]:
 def benchmark_item_to_task_spec(item: Dict[str, object]) -> TaskSpec:
     metadata = item.get("metadata", {})
     gene_vector = item.get("gene_vector", {})
+    evaluation = item.get("evaluation_record", {})
+    release = item.get("release_record", {})
     task_id = str(item.get("item_id", ""))
     return TaskSpec(
         task_id=task_id,
@@ -66,18 +71,28 @@ def benchmark_item_to_task_spec(item: Dict[str, object]) -> TaskSpec:
         tool_schema=build_tool_schema(item),
         verifier_id=f"verifier__{task_id}",
         metadata={
-            "validation_stats": item.get("validation_stats", {}),
-            "calibration_stats": item.get("calibration_stats", {}),
+            "validation_stats": evaluation.get("validation_stats", item.get("validation_stats", {})),
+            "calibration_stats": evaluation.get("calibration_stats", item.get("calibration_stats", {})),
+            "fixed_metrics": evaluation.get("fixed_metrics", {}),
             "human_review": item.get("human_review", {}),
+            "release_record": release,
+            "scoring_mode": evaluation.get("scoring_mode", "reference_answer"),
+            "reference_answer_applicable": evaluation.get("reference_answer_applicable", True),
         },
     )
 
 
 def task_spec_to_verifier_spec(task: TaskSpec) -> VerifierSpec:
+    reference_answer_applicable = task.metadata.get("reference_answer_applicable", True)
     rules = [
         VerifierFieldRule(field=name, expected_value=value)
         for name, value in task.ground_truth_final_state.items()
     ]
+    success_criteria = ["最终状态字段全部匹配 ground_truth_final_state"]
+    if reference_answer_applicable:
+        success_criteria.append("reference_answer 与 ground_truth_final_state.reference_answer 一致")
+    else:
+        success_criteria.append("不依赖 reference_answer，按结构化状态和归因目标判定成功")
     return VerifierSpec(
         verifier_id=task.verifier_id,
         task_id=task.task_id,
@@ -85,16 +100,20 @@ def task_spec_to_verifier_spec(task: TaskSpec) -> VerifierSpec:
         scenario_type=task.scenario_type,
         reward_mode="binary_outcome",
         field_rules=rules,
-        success_criteria=[
-            "最终状态字段全部匹配 ground_truth_final_state",
-            "reference_answer 与 ground_truth_final_state.reference_answer 一致",
-        ],
+        success_criteria=success_criteria,
         failure_reasons=[
             "final_state_mismatch",
             "missing_required_field",
             "scenario_time_mismatch" if task.scenario_type in {"real_time", "out_of_date"} else "unsupported_claim",
         ],
-        metadata={"domain": task.domain, "target_error_type": task.target_error_type},
+        metadata={
+            "domain": task.domain,
+            "target_error_type": task.target_error_type,
+            "scoring_mode": task.metadata.get("scoring_mode", "reference_answer"),
+            "reference_answer_applicable": reference_answer_applicable,
+            "benchmark_stability": task.metadata.get("fixed_metrics", {}).get("benchmark_stability", 0.0),
+            "benchmark_discrimination": task.metadata.get("fixed_metrics", {}).get("benchmark_discrimination", 0.0),
+        },
     )
 
 

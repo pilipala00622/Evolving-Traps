@@ -13,19 +13,32 @@ REVIEW_DECISIONS = {"approve", "revise", "reject"}
 
 def build_review_task(item: Dict[str, object]) -> Dict[str, object]:
     human_review = item.get("human_review", {})
-    validation = item.get("validation_stats", {})
-    calibration = item.get("calibration_stats", {})
-    context = str(item.get("context", ""))
+    evaluation = item.get("evaluation_record", {})
+    validation = evaluation.get("validation_stats", item.get("validation_stats", {}))
+    calibration = evaluation.get("calibration_stats", item.get("calibration_stats", {}))
+    fixed_metrics = evaluation.get("fixed_metrics", {})
+    source = item.get("source_record", {})
+    context = str(source.get("context", item.get("context", "")))
+    query = source.get("query", item.get("query", ""))
+    reference_answer = source.get("reference_answer", item.get("reference_answer", ""))
+    scoring_mode = evaluation.get("scoring_mode", human_review.get("scoring_mode", "reference_answer"))
+    reference_answer_applicable = evaluation.get(
+        "reference_answer_applicable",
+        human_review.get("reference_answer_applicable", True),
+    )
 
     return {
         "item_id": item.get("item_id", ""),
         "target_error_type": item.get("target_error_type", ""),
+        "intended_failure_mode": source.get("intended_failure_mode", item.get("target_error_type", "")),
         "scenario_type": item.get("scenario_type", ""),
-        "query": item.get("query", ""),
+        "query": query,
         "context_preview": context[:1200],
-        "reference_answer": item.get("reference_answer", ""),
+        "reference_answer": reference_answer,
         "plan_id": item.get("metadata", {}).get("plan_id", ""),
         "plan_summary": item.get("metadata", {}).get("plan_summary", {}),
+        "scoring_mode": scoring_mode,
+        "reference_answer_applicable": reference_answer_applicable,
         "auto_signals": {
             "target_error_trigger_rate": validation.get("target_error_trigger_rate", 0.0),
             "non_target_error_leakage": validation.get("non_target_error_leakage", 0.0),
@@ -34,19 +47,25 @@ def build_review_task(item: Dict[str, object]) -> Dict[str, object]:
             "naturalness_mean": validation.get("naturalness_mean", 0.0),
             "anchor_score_mean": calibration.get("score_mean", 0.0),
             "anchor_difficulty_bucket": calibration.get("difficulty_bucket", "unknown"),
+            "benchmark_stability": fixed_metrics.get("benchmark_stability", 0.0),
+            "benchmark_discrimination": fixed_metrics.get("benchmark_discrimination", 0.0),
         },
         "required_checks": human_review.get("required_checks", []),
         "role_responsibilities": human_review.get("role_responsibilities", {}),
         "review_result": {
             "reviewer": "",
             "decision": "",
+            "confirmed_intended_failure_mode": source.get("intended_failure_mode", item.get("target_error_type", "")),
             "confirmed_target_error_type": item.get("target_error_type", ""),
             "confirmed_scenario_type": item.get("scenario_type", ""),
-            "reference_answer_supported": None,
+            "reference_answer_supported": None if reference_answer_applicable else True,
             "final_state_is_correctly_specified": None,
             "verifier_design_is_feasible": None,
             "reward_should_be_verifiable": None,
             "query_is_natural": None,
+            "query_is_good_trigger": None,
+            "requires_sentence_annotation": None,
+            "sentence_annotation_priority": "medium",
             "time_metadata_correct": None,
             "is_single_target_error": None,
             "release_priority": "medium",
@@ -80,18 +99,27 @@ def validate_review_row(row: Dict[str, object]) -> None:
     if decision not in REVIEW_DECISIONS:
         raise ValueError(f"{item_id} 的 decision 必须是 {sorted(REVIEW_DECISIONS)} 之一")
 
+    reference_answer_applicable = row.get("reference_answer_applicable", True)
     required_boolean_fields = [
-        "reference_answer_supported",
         "final_state_is_correctly_specified",
         "verifier_design_is_feasible",
         "reward_should_be_verifiable",
         "query_is_natural",
-        "is_single_target_error",
+        "query_is_good_trigger",
+        "requires_sentence_annotation",
     ]
+    if reference_answer_applicable:
+        required_boolean_fields.insert(0, "reference_answer_supported")
+
     for field_name in required_boolean_fields:
         value = review_result.get(field_name)
         if not isinstance(value, bool):
             raise ValueError(f"{item_id} 的 {field_name} 必须填写 true/false")
+
+    if not reference_answer_applicable:
+        value = review_result.get("reference_answer_supported")
+        if value is not None and not isinstance(value, bool):
+            raise ValueError(f"{item_id} 的 reference_answer_supported 在非 reference-answer 题中应留空或填写 true/false")
 
 
 def merge_reviews(
@@ -127,8 +155,17 @@ def merge_reviews(
         item["human_review"].update(
             {
                 "status": status,
+                "scoring_mode": review_row.get("scoring_mode", item["human_review"].get("scoring_mode", "reference_answer")),
+                "reference_answer_applicable": review_row.get(
+                    "reference_answer_applicable",
+                    item["human_review"].get("reference_answer_applicable", True),
+                ),
                 "reviewer": result.get("reviewer", ""),
                 "notes": result.get("notes", ""),
+                "labeled_intended_failure_mode": result.get(
+                    "confirmed_intended_failure_mode",
+                    item.get("source_record", {}).get("intended_failure_mode", item.get("target_error_type", "")),
+                ),
                 "labeled_target_error_type": result.get(
                     "confirmed_target_error_type",
                     item.get("target_error_type", ""),
@@ -140,6 +177,15 @@ def merge_reviews(
             }
         )
         item["human_review"]["review_result"] = result
+        if "release_record" in item:
+            item["release_record"]["stage"] = status
+            item["release_record"]["eligible_for_release"] = decision == "approve"
+            item["release_record"]["eligible_for_verifier_benchmark"] = bool(
+                result.get("verifier_design_is_feasible") and result.get("reward_should_be_verifiable")
+            )
+            item["release_record"]["eligible_for_training"] = bool(
+                result.get("query_is_good_trigger") and result.get("reward_should_be_verifiable")
+            )
 
         if decision == "approve":
             approved_items.append(item)
@@ -147,4 +193,3 @@ def merge_reviews(
     write_json(output_path, items)
     if approved_output_path is not None:
         write_json(approved_output_path, approved_items)
-
