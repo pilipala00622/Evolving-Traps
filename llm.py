@@ -15,8 +15,10 @@ import hmac
 import hashlib
 import base64
 import threading
-import pandas as pd
-from pandas.core.generic import T
+try:
+    import pandas as pd
+except ImportError:
+    pd = None
 import requests
 from requests.adapters import HTTPAdapter
 from multiprocessing import Process, Lock
@@ -208,8 +210,8 @@ def _exp_backoff_sleep(base_seconds: int, attempt: int, max_seconds: int = 60) -
     """指数回退：base * 2^attempt，上限 max_seconds"""
     sleep_seconds = min(max_seconds, base_seconds * (2 ** attempt))
     time.sleep(sleep_seconds)
-DEFAULT_TIMEOUT = 300  # 默认超时时间（秒）
-SLOW_THINKING_TIMEOUT = 1200  # 慢思考模型超时时间（秒）
+DEFAULT_TIMEOUT = _get_int_env("WEREWOLF_DEFAULT_TIMEOUT", 300)  # 默认超时时间（秒）
+SLOW_THINKING_TIMEOUT = _get_int_env("WEREWOLF_SLOW_THINKING_TIMEOUT", 1200)  # 慢思考模型超时时间（秒）
 
 # 慢思考模型列表（需要更长超时时间的模型）
 SLOW_THINKING_MODELS = [
@@ -319,6 +321,26 @@ def _extract_text_from_stream_response(response_data):
 
     return "".join(text_parts)
 
+
+def _extract_reasoning_payload(payload):
+    """递归提取响应里和 reasoning / thinking 相关的字段。"""
+    results = {}
+
+    def walk(value, prefix="root"):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                lower_key = str(key).lower()
+                child_prefix = f"{prefix}.{key}"
+                if any(token in lower_key for token in ("reason", "think", "cot", "chain_of_thought")):
+                    results[child_prefix] = child
+                walk(child, child_prefix)
+        elif isinstance(value, list):
+            for idx, child in enumerate(value):
+                walk(child, f"{prefix}[{idx}]")
+
+    walk(payload)
+    return results
+
 def get_model_timeout(model_name):
     """根据模型名称获取超时时间"""
     if model_name in SLOW_THINKING_MODELS:
@@ -339,6 +361,8 @@ class CommonLLM():
         self.usage_info = {}  # 存储token使用信息
         self.latency = 0  # 存储请求耗时（客户端计算）
         self.timing_info = {}  # 存储API返回的时间戳信息
+        self.raw_response_data = {}
+        self.reasoning_payload = {}
         
         # 设置超时时间
         self.timeout = get_model_timeout(model_name)
@@ -380,6 +404,8 @@ class CommonLLM():
         self.usage_info = {}
         self.latency = 0
         self.timing_info = {}
+        self.raw_response_data = {}
+        self.reasoning_payload = {}
         
         while times < COMMON_MAX_RETRIES:
             try:
@@ -395,6 +421,8 @@ class CommonLLM():
                 self.latency = end_time - start_time
                 
                 response_data = json.loads(response.text)
+                self.raw_response_data = response_data
+                self.reasoning_payload = _extract_reasoning_payload(response_data)
                 
                 # 检查API是否返回错误
                 if 'code' in response_data and response_data['code'] != 0:
@@ -528,6 +556,8 @@ class HunYuanLLM():
         self.trace_id = None  # 存储最后一次请求的trace_id
         self.usage_info = {}  # 存储token使用信息
         self.latency = 0  # 存储请求耗时
+        self.raw_response_data = {}
+        self.reasoning_payload = {}
         
         # 检查是否是需要使用新API的模型（hunyuan-T1-2.5 和 hunyuan-2.0-thinking-20251109）
         if model_name == "hunyuan-T1-2.5" or model_name == "hunyuan-2.0-thinking-20251109":
@@ -588,6 +618,8 @@ class HunYuanLLM():
         self.trace_id = None
         self.usage_info = {}
         self.latency = 0
+        self.raw_response_data = {}
+        self.reasoning_payload = {}
         
         for i in range(tries):
             try:
@@ -620,6 +652,11 @@ class HunYuanLLM():
                                 
                                 try:
                                     chunk_data = json.loads(data_str)
+                                    if chunk_data:
+                                        self.raw_response_data = chunk_data
+                                        extracted = _extract_reasoning_payload(chunk_data)
+                                        if extracted:
+                                            self.reasoning_payload.update(extracted)
                                     
                                     # 提取trace_id（通常在第一条消息中）
                                     if self.trace_id is None and 'id' in chunk_data:
@@ -651,6 +688,8 @@ class HunYuanLLM():
                         timeout=300
                     )
                     response_data = json.loads(response.text)
+                    self.raw_response_data = response_data
+                    self.reasoning_payload = _extract_reasoning_payload(response_data)
                     
                     # 提取答案
                     hy_answer = response_data["choices"][0]["message"]["content"]
@@ -715,6 +754,16 @@ class LLM():
     def timing_info(self):
         """获取时间戳信息"""
         return getattr(self.llm, 'timing_info', {})
+
+    @property
+    def raw_response_data(self):
+        """获取最近一次请求的原始响应。"""
+        return getattr(self.llm, 'raw_response_data', {})
+
+    @property
+    def reasoning_payload(self):
+        """获取最近一次请求中 reasoning / thinking 相关字段。"""
+        return getattr(self.llm, 'reasoning_payload', {})
 
 
 # ==================== 简化接口函数 ====================
@@ -1252,4 +1301,3 @@ if __name__ == "__main__":
         num_processes=20,
         remove_path=False
     )
-
