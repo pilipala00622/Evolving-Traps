@@ -15,10 +15,8 @@ import hmac
 import hashlib
 import base64
 import threading
-try:
-    import pandas as pd
-except ImportError:
-    pd = None
+import pandas as pd
+from pandas.core.generic import T
 import requests
 from requests.adapters import HTTPAdapter
 from multiprocessing import Process, Lock
@@ -103,6 +101,7 @@ COMMON_MODEL_MARKERS = {
     "gpt-5.1": ["api_openai_gpt-5.1-response", {"reasoning": {"effort": "high"}, "stream":True}],
     
     # doubao
+    "doubao-seed-2.0":["api_doubao_doubao-seed-2-0-code-preview-260215", {"max_tokens": 128000, "reasoning_effort": "high"}],
     "doubao-seed-1.8":["api_doubao_doubao-seed-1-8-251228", {"stream": True, "max_tokens": 32000, "reasoning_effort": "high"}],
     "doubao-seed-thinking-1015":["api_doubao_doubao-seed-1-6-251015", {"stream": True, "max_tokens": 32000, "reasoning_effort": "high"}],
     "doubao-seed-thinking-0715":"api_doubao_Doubao-Seed-1.6-thinking-250715",
@@ -110,7 +109,8 @@ COMMON_MODEL_MARKERS = {
     "doubao-1.5-pro-32k":"api_doubao_Doubao-1.5-pro-32k-250115",
     
     # qwen系列
-    # 0202更新
+    "qwen3.6-plus":["api_ali_qwen3.6-plus",{"model": "api_ali_qwen3.6-plus"}],   # EVAL_MODELS 主键
+    "qwen-plus-3.6":["api_ali_qwen3.6-plus",{"model": "api_ali_qwen3.6-plus"}],  # 向后兼容别名
     "qwen3.5-plus":["api_ali_qwen3.5-plus",{"max_tokens": 65536, "enable_thinking": True}],
     "qwen3-235b": ["api_ali_qwen-plus-2025-07-28", {"max_tokens": 32768, "enable_thinking": True}],
     "qwen3-max-preview-thinking": ["api_ali_qwen3-max-preview", {"max_tokens": 32768, "enable_thinking": True}],
@@ -130,10 +130,13 @@ COMMON_MODEL_MARKERS = {
     "gemini-3-pro-preview-naci-default":["api_naci_default_gemini-3-pro-preview",{"stream": True}],
     
     # minimax
+    "minimax-m2.7":["api_minimax_MiniMax-M2.7", {"max_tokens": 128000}],         # EVAL_MODELS 主键（小写）
+    "Minimax-M2.7":["api_minimax_MiniMax-M2.7", {"max_tokens": 128000}],         # 向后兼容别名（原始大写）
     "Minimax-M2":["api_minimax_MiniMax-M2",{"stream": True, "max_completion_tokens": 64000}],
     "minimax-m1":"api_minimax_MiniMax-M1",
     
     # claude
+    
     "aws-claude-opus-4.6":["api_aws_third_anthropic.claude-opus-4-6-v1", {"thinking": {"type": "adaptive"}, "max_tokens": 128000, "output_config": {"effort": "max"}}],
     "aws-claude-sonnet-4.6":["api_aws_third_anthropic.claude-sonnet-4-6", {"thinking": {"type": "adaptive"}, "max_tokens": 65536, "output_config": {"effort": "high"}}],
     
@@ -149,6 +152,8 @@ COMMON_MODEL_MARKERS = {
     "claude-sonnet-4.5-slow":["api_aws_third_anthropic.claude-sonnet-4-5-20250929-v1:0", {"thinking": {"type": "enabled", "budget_tokens": 10000}, "max_tokens": 20000}],
 
     # glm
+    "glm-5.1":["api_zhipu_glm-5.1"],
+    "glm-5":["api_zhipu_glm-5", {"thinking": {"type": "enabled"}, "max_tokens": 128000}],
     "glm-4.7":["api_zhipu_glm-4.7", {"stream": True, "thinking": {"type": "enabled"}, "max_tokens": 128000}],
     "glm-4.5-thinking":["api_zhipu_glm-4.5",{"stream": True, "thinking": {"type": "enabled"}, "max_tokens": 32768}],    
     "glm-4.5-nonthinking":["api_zhipu_glm-4.5",{"stream": True, "thinking": {"type": "disabled"}, "max_tokens": 32768}],
@@ -176,6 +181,11 @@ COMMON_MODEL_MARKERS = {
 
     # grok
     "grok-4":["api_xai_grok-4-latest", {"max_tokens": 64000, "stream":True}],
+    "grok-4.2":"api_xai_grok-4.20-beta-0309-reasoning",
+    
+    # xiaomi
+    "Xiaomi-MiMo-V2-Pro":["api_xiaomi_mimo-v2-pro", {"max_completion_tokens": 131072}],
+    "Xiaomi-MiMo-V2-Omni":["api_xiaomi_mimo-v2-omni", {"max_completion_tokens": 131072}],
     
 }
 
@@ -210,8 +220,8 @@ def _exp_backoff_sleep(base_seconds: int, attempt: int, max_seconds: int = 60) -
     """指数回退：base * 2^attempt，上限 max_seconds"""
     sleep_seconds = min(max_seconds, base_seconds * (2 ** attempt))
     time.sleep(sleep_seconds)
-DEFAULT_TIMEOUT = _get_int_env("WEREWOLF_DEFAULT_TIMEOUT", 300)  # 默认超时时间（秒）
-SLOW_THINKING_TIMEOUT = _get_int_env("WEREWOLF_SLOW_THINKING_TIMEOUT", 1200)  # 慢思考模型超时时间（秒）
+DEFAULT_TIMEOUT = 300  # 默认超时时间（秒）
+SLOW_THINKING_TIMEOUT = 1200  # 慢思考模型超时时间（秒）
 
 # 慢思考模型列表（需要更长超时时间的模型）
 SLOW_THINKING_MODELS = [
@@ -321,26 +331,6 @@ def _extract_text_from_stream_response(response_data):
 
     return "".join(text_parts)
 
-
-def _extract_reasoning_payload(payload):
-    """递归提取响应里和 reasoning / thinking 相关的字段。"""
-    results = {}
-
-    def walk(value, prefix="root"):
-        if isinstance(value, dict):
-            for key, child in value.items():
-                lower_key = str(key).lower()
-                child_prefix = f"{prefix}.{key}"
-                if any(token in lower_key for token in ("reason", "think", "cot", "chain_of_thought")):
-                    results[child_prefix] = child
-                walk(child, child_prefix)
-        elif isinstance(value, list):
-            for idx, child in enumerate(value):
-                walk(child, f"{prefix}[{idx}]")
-
-    walk(payload)
-    return results
-
 def get_model_timeout(model_name):
     """根据模型名称获取超时时间"""
     if model_name in SLOW_THINKING_MODELS:
@@ -361,8 +351,6 @@ class CommonLLM():
         self.usage_info = {}  # 存储token使用信息
         self.latency = 0  # 存储请求耗时（客户端计算）
         self.timing_info = {}  # 存储API返回的时间戳信息
-        self.raw_response_data = {}
-        self.reasoning_payload = {}
         
         # 设置超时时间
         self.timeout = get_model_timeout(model_name)
@@ -404,8 +392,6 @@ class CommonLLM():
         self.usage_info = {}
         self.latency = 0
         self.timing_info = {}
-        self.raw_response_data = {}
-        self.reasoning_payload = {}
         
         while times < COMMON_MAX_RETRIES:
             try:
@@ -421,8 +407,6 @@ class CommonLLM():
                 self.latency = end_time - start_time
                 
                 response_data = json.loads(response.text)
-                self.raw_response_data = response_data
-                self.reasoning_payload = _extract_reasoning_payload(response_data)
                 
                 # 检查API是否返回错误
                 if 'code' in response_data and response_data['code'] != 0:
@@ -556,8 +540,6 @@ class HunYuanLLM():
         self.trace_id = None  # 存储最后一次请求的trace_id
         self.usage_info = {}  # 存储token使用信息
         self.latency = 0  # 存储请求耗时
-        self.raw_response_data = {}
-        self.reasoning_payload = {}
         
         # 检查是否是需要使用新API的模型（hunyuan-T1-2.5 和 hunyuan-2.0-thinking-20251109）
         if model_name == "hunyuan-T1-2.5" or model_name == "hunyuan-2.0-thinking-20251109":
@@ -618,8 +600,6 @@ class HunYuanLLM():
         self.trace_id = None
         self.usage_info = {}
         self.latency = 0
-        self.raw_response_data = {}
-        self.reasoning_payload = {}
         
         for i in range(tries):
             try:
@@ -652,11 +632,6 @@ class HunYuanLLM():
                                 
                                 try:
                                     chunk_data = json.loads(data_str)
-                                    if chunk_data:
-                                        self.raw_response_data = chunk_data
-                                        extracted = _extract_reasoning_payload(chunk_data)
-                                        if extracted:
-                                            self.reasoning_payload.update(extracted)
                                     
                                     # 提取trace_id（通常在第一条消息中）
                                     if self.trace_id is None and 'id' in chunk_data:
@@ -688,8 +663,6 @@ class HunYuanLLM():
                         timeout=300
                     )
                     response_data = json.loads(response.text)
-                    self.raw_response_data = response_data
-                    self.reasoning_payload = _extract_reasoning_payload(response_data)
                     
                     # 提取答案
                     hy_answer = response_data["choices"][0]["message"]["content"]
@@ -754,16 +727,6 @@ class LLM():
     def timing_info(self):
         """获取时间戳信息"""
         return getattr(self.llm, 'timing_info', {})
-
-    @property
-    def raw_response_data(self):
-        """获取最近一次请求的原始响应。"""
-        return getattr(self.llm, 'raw_response_data', {})
-
-    @property
-    def reasoning_payload(self):
-        """获取最近一次请求中 reasoning / thinking 相关字段。"""
-        return getattr(self.llm, 'reasoning_payload', {})
 
 
 # ==================== 简化接口函数 ====================
@@ -1301,3 +1264,4 @@ if __name__ == "__main__":
         num_processes=20,
         remove_path=False
     )
+

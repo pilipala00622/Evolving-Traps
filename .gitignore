@@ -1,9 +1,15 @@
 __pycache__/
 *.py[cod]
 .DS_Store
+.idea
 
 evolution_results.json
 evolution_v2_results.json
-demo_outputs/
+data/
+reference/
 
 第一阶段-14个模型-gpt51评测/
+
+llm.py
+
+.claude/
