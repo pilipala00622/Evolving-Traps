@@ -23,14 +23,14 @@ verifier_shape          → metadata.verifier_shape
 
 HalluSEA VerifierSpec 的 success_criteria 由
 carrier_rules_to_success_criteria() 根据 CARRIER_RULES 自动生成，
-与 evaluate_hard_hallucination_candidates.py 的 auto_label 逻辑保持一致。
+与 pipelines.eval.evaluate_hard_hallucination_candidates 的 auto_label 逻辑保持一致。
 """
 
 from __future__ import annotations
 
 from typing import Any, Dict, List, Optional
 
-from core.round_manager import CARRIER_RULES, HALLUSEA_GATES
+from core.round_manager import CARRIER_RULES, HALLUSEA_GATES, difficulty_bucket, upgrade_gene_schema
 
 
 # failure_mechanism → scenario_type 的映射（spec_factory 使用 scenario_type）
@@ -78,6 +78,7 @@ def grit_gene_to_benchmark_item(
     -------
     benchmark_item 格式的字典，可直接传入 spec_factory.benchmark_item_to_task_spec()
     """
+    gene = upgrade_gene_schema(gene)
     gene_id = gene.get("gene_id") or gene.get("seed_id", "")
     answer_carrier = gene.get("answer_carrier", "")
     failure_mechanism = gene.get("failure_mechanism", "")
@@ -97,6 +98,8 @@ def grit_gene_to_benchmark_item(
     tehr = metrics.get("tehr", 0.0)
     sis  = metrics.get("sis",  0.0)
     purity = metrics.get("purity", 0.0)
+    difficulty = gene.get("difficulty", {})
+    difficulty_score = difficulty.get("score", 0.0)
 
     return {
         "item_id": gene_id,
@@ -109,9 +112,14 @@ def grit_gene_to_benchmark_item(
             "domain": gene.get("knowledge_base_category", ""),
             "task_type": gene.get("task_frame", ""),
             "failure_mechanism": failure_mechanism,
+            "manifestation_hint": gene.get("manifestation_hint", ""),
             "answer_carrier": answer_carrier,
             "trigger_form": gene.get("trigger_form", ""),
             "support_gap_type": gene.get("support_gap_type", ""),
+            "evidence_layout": gene.get("evidence_layout", ""),
+            "pressure_pattern": gene.get("pressure_pattern", ""),
+            "distractor_style": gene.get("distractor_style", ""),
+            "boundary_scope": gene.get("boundary_scope", ""),
         },
         "metadata": {
             "seed_id": gene.get("seed_id", ""),
@@ -123,8 +131,9 @@ def grit_gene_to_benchmark_item(
             "answer_carrier": answer_carrier,
             "verifier_shape": gene.get("verifier_shape", ""),
             "abstention_expected": gene.get("abstention_expected", True),
+            "difficulty": difficulty,
             "plan_summary": {
-                "complexity_bucket": _tehr_to_complexity(tehr),
+                "complexity_bucket": difficulty_bucket(difficulty_score) if difficulty else _tehr_to_complexity(tehr),
             },
         },
         "evaluation_record": {
@@ -140,6 +149,7 @@ def grit_gene_to_benchmark_item(
             "fixed_metrics": {
                 "benchmark_stability":      round(sis, 4),
                 "benchmark_discrimination": round(tehr, 4),
+                "design_difficulty":        round(float(difficulty_score), 4),
             },
         },
         "human_review": {

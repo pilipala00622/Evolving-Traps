@@ -4,7 +4,7 @@ core/round_manager.py
 GRIT 进化轮次管理模块。
 
 定义三层锁定 schema：
-  1. 失败机制分类体系（failure_mechanism × target_error_type 合法组合）
+  1. trap schema v2：failure_mechanism + manifestation_hint + trap 结构轴
   2. answer_carrier → auto_label 规则（与 evaluate 脚本保持一致）
   3. Gene schema 版本（字段集 + 必须字段）
 
@@ -24,32 +24,122 @@ from typing import Any, Dict, List, Optional
 
 
 # ─────────────────────────────────────────────
-# 1. 失败机制分类体系（锁定版 v1）
+# 1. Trap schema v2（锁定版）
 # ─────────────────────────────────────────────
 
 FAILURE_MECHANISMS: Dict[str, str] = {
     "weak_evidence_to_strong_conclusion": "弱证据强结论：文档只有相关线索，不足以直接支持确定性结论",
     "missing_info_hard_answer": "缺失信息硬答：文档缺关键字段，模型补出了不存在的信息",
     "background_as_direct_evidence": "背景当直接证据：文档提供背景材料，模型误当直接支撑",
+    "temporal_scope_violation": "时间域越界：文档只支持特定时间点，模型不加限定地推广到其他时间",
+    "cross_source_conflation": "跨源混淆：把不同段落或不同文档的信息错误融合成一条答案",
+    "implicit_condition_drop": "隐含条件丢失：文档结论依赖条件，模型输出时省略前提直接下结论",
+}
+
+FAILURE_MANIFESTATIONS: Dict[str, str] = {
+    "unsupported_claim": "缺证断言：结论超出文档可支持范围",
+    "fabricated_fact": "引入新事实：补出了原文不存在的实体、数值、时间或引文",
+    "wrong_attribution": "错误匹配：把证据归给了错误对象、错误来源或错误事件",
+    "scope_error": "限定错误：忽略适用条件、时间或对象边界",
+    "certainty_inflation": "确定性膨胀：把推测、可能或弱证据写成确定事实",
+    "compositional_error": "错误拼接：把多个局部事实错误拼成一个新结论",
 }
 
 TARGET_ERROR_TYPES: Dict[str, str] = {
-    "越权推理": "在弱证据下给出确定性结论，超出文档支持范围",
-    "无中生有": "补出文档中不存在的数值、实体或引文",
-    "生成错误": "把背景材料误当成直接证据作答",
+    "越权推理": "兼容层标签：主要对应 unsupported_claim",
+    "无中生有": "兼容层标签：主要对应 fabricated_fact",
+    "错误匹配": "兼容层标签：主要对应 wrong_attribution",
+    "限定错误": "兼容层标签：主要对应 scope_error",
+    "确定性膨胀": "兼容层标签：主要对应 certainty_inflation",
+    "错误拼接": "兼容层标签：主要对应 compositional_error",
+    "生成错误": "兼容旧标签：保留给历史样本，不建议新样本继续使用",
 }
 
-# 合法的 (failure_mechanism, target_error_type) 组合
-# 不在此列表中的组合视为 schema 违规，不进入进化循环
-VALID_MECHANISM_ERROR_PAIRS: List[tuple] = [
-    ("weak_evidence_to_strong_conclusion", "越权推理"),
-    ("missing_info_hard_answer",           "无中生有"),
-    ("background_as_direct_evidence",      "生成错误"),
-    # 边界允许：弱证据场景也可能导致生成错误
-    ("weak_evidence_to_strong_conclusion", "生成错误"),
+MANIFESTATION_TO_TARGET_ERROR_TYPE: Dict[str, str] = {
+    "unsupported_claim": "越权推理",
+    "fabricated_fact": "无中生有",
+    "wrong_attribution": "错误匹配",
+    "scope_error": "限定错误",
+    "certainty_inflation": "确定性膨胀",
+    "compositional_error": "错误拼接",
+}
+
+LEGACY_TARGET_ERROR_TO_MANIFESTATION: Dict[str, str] = {
+    "越权推理": "unsupported_claim",
+    "无中生有": "fabricated_fact",
+    "错误匹配": "wrong_attribution",
+    "限定错误": "scope_error",
+    "确定性膨胀": "certainty_inflation",
+    "错误拼接": "compositional_error",
+    "生成错误": "wrong_attribution",
+}
+
+VALID_MECHANISM_MANIFESTATION_PAIRS: List[tuple[str, str]] = [
+    ("weak_evidence_to_strong_conclusion", "unsupported_claim"),
+    ("weak_evidence_to_strong_conclusion", "certainty_inflation"),
+    ("weak_evidence_to_strong_conclusion", "scope_error"),
+    ("missing_info_hard_answer", "fabricated_fact"),
+    ("missing_info_hard_answer", "unsupported_claim"),
+    ("background_as_direct_evidence", "unsupported_claim"),
+    ("background_as_direct_evidence", "wrong_attribution"),
+    ("temporal_scope_violation", "scope_error"),
+    ("temporal_scope_violation", "certainty_inflation"),
+    ("cross_source_conflation", "wrong_attribution"),
+    ("cross_source_conflation", "compositional_error"),
+    ("implicit_condition_drop", "scope_error"),
+    ("implicit_condition_drop", "unsupported_claim"),
 ]
 
-GENE_SCHEMA_VERSION = "v1"
+# 保留给旧脚本/旧文档读取；真正校验以 mechanism × manifestation 为准。
+VALID_MECHANISM_ERROR_PAIRS: List[tuple[str, str]] = sorted(
+    {
+        (mechanism, MANIFESTATION_TO_TARGET_ERROR_TYPE[manifestation])
+        for mechanism, manifestation in VALID_MECHANISM_MANIFESTATION_PAIRS
+        if manifestation in MANIFESTATION_TO_TARGET_ERROR_TYPE
+    }
+    | {
+        ("background_as_direct_evidence", "生成错误"),
+        ("weak_evidence_to_strong_conclusion", "生成错误"),
+    }
+)
+
+TRAP_EVIDENCE_LAYOUTS: Dict[str, str] = {
+    "single_span": "单证据片段即可看出边界",
+    "multi_span_same_doc": "需要同一文档中的多个片段联合判断",
+    "cross_doc": "需要跨文档或跨来源整合后才看清边界",
+}
+
+TRAP_PRESSURE_PATTERNS: Dict[str, str] = {
+    "forced_precision": "问题逼迫模型给出精确数值或精确口径",
+    "forced_binary": "问题逼迫模型给出是/否、适用/不适用等二值判断",
+    "forced_citation": "问题逼迫模型给出出处、页码、章条等引证",
+    "forced_completeness": "问题逼迫模型给出完整名单、完整结论或完整总结",
+}
+
+TRAP_DISTRACTOR_STYLES: Dict[str, str] = {
+    "near_miss": "文档提供了非常接近但仍不够的证据",
+    "background_dense": "文档有大量背景性材料，容易被错当直接证据",
+    "temporal_shift": "文档混有不同时间点的信息，容易跨时点误用",
+    "entity_alias_confusion": "存在别名、相似实体或跨源对象，容易误绑定",
+}
+
+TRAP_BOUNDARY_SCOPES: Dict[str, str] = {
+    "time": "时间边界",
+    "condition": "适用条件或前提边界",
+    "entity": "实体、主体或对象边界",
+    "numeric_formula": "计算口径、数值槽位或公式边界",
+    "citation_origin": "引文来源或出处边界",
+}
+
+DIFFICULTY_DIMENSIONS: Dict[str, Dict[str, Any]] = {
+    "gap_concealment": {"min": 1, "max": 5, "description": "证据缺口隐蔽度"},
+    "distractor_density": {"min": 0, "max": 3, "description": "干扰信息密度"},
+    "composition_depth": {"min": 1, "max": 3, "description": "所需跨片段/跨文档组合深度"},
+    "pressure_intensity": {"min": 0, "max": 3, "description": "问题对模型逼答的强度"},
+    "verification_complexity": {"min": 1, "max": 3, "description": "后验验证复杂度"},
+}
+
+GENE_SCHEMA_VERSION = "v2"
 
 # ─────────────────────────────────────────────
 # 评测面板配置（锁定：三轮实验期间不可更换）
@@ -88,11 +178,17 @@ GENE_REQUIRED_FIELDS: List[str] = [
     "round_id",
     "model_version",
     "failure_mechanism",
+    "manifestation_hint",
     "trigger_form",
     "support_gap_type",
     "target_error_type",
     "answer_carrier",
+    "evidence_layout",
+    "pressure_pattern",
+    "distractor_style",
+    "boundary_scope",
     "abstention_expected",
+    "difficulty",
     "difficulty_knobs",
     "verifier_shape",
     "mutation_axes",
@@ -165,6 +261,176 @@ FITNESS_WEIGHTS: Dict[str, float] = {
 
 TRIVIALITY_SIMILARITY_THRESHOLD: float = 0.68
 TRIVIALITY_PENALTY_FACTOR: float = 0.35
+
+
+def _clamp_int(value: Any, minimum: int, maximum: int, fallback: int) -> int:
+    try:
+        return max(minimum, min(maximum, int(value)))
+    except (TypeError, ValueError):
+        return fallback
+
+
+def difficulty_score(dims: Dict[str, Any]) -> float:
+    """综合难度分 [0, 1]，用于课程排序和 trap 复杂度摘要。"""
+    gc = (_clamp_int(dims.get("gap_concealment"), 1, 5, 1) - 1) / 4
+    dd = _clamp_int(dims.get("distractor_density"), 0, 3, 0) / 3
+    cd = (_clamp_int(dims.get("composition_depth"), 1, 3, 1) - 1) / 2
+    pi = _clamp_int(dims.get("pressure_intensity"), 0, 3, 0) / 3
+    vc = (_clamp_int(dims.get("verification_complexity"), 1, 3, 1) - 1) / 2
+    return round(0.30 * gc + 0.20 * dd + 0.20 * cd + 0.15 * pi + 0.15 * vc, 4)
+
+
+def difficulty_bucket(score: float) -> str:
+    if score >= 0.67:
+        return "hard"
+    if score >= 0.34:
+        return "medium"
+    return "easy"
+
+
+def infer_manifestation_hint(gene: Dict[str, Any]) -> str:
+    existing = gene.get("manifestation_hint")
+    if isinstance(existing, str) and existing in FAILURE_MANIFESTATIONS:
+        return existing
+
+    target_error = str(gene.get("target_error_type", "")).strip()
+    if target_error in LEGACY_TARGET_ERROR_TO_MANIFESTATION:
+        return LEGACY_TARGET_ERROR_TO_MANIFESTATION[target_error]
+
+    mechanism = str(gene.get("failure_mechanism", "")).strip()
+    if mechanism == "missing_info_hard_answer":
+        return "fabricated_fact"
+    if mechanism == "background_as_direct_evidence":
+        return "wrong_attribution"
+    if mechanism == "temporal_scope_violation":
+        return "scope_error"
+    if mechanism == "cross_source_conflation":
+        return "compositional_error"
+    if mechanism == "implicit_condition_drop":
+        return "scope_error"
+    return "unsupported_claim"
+
+
+def infer_target_error_type(gene: Dict[str, Any]) -> str:
+    target_error = str(gene.get("target_error_type", "")).strip()
+    if target_error in TARGET_ERROR_TYPES:
+        return target_error
+    manifestation = infer_manifestation_hint(gene)
+    return MANIFESTATION_TO_TARGET_ERROR_TYPE.get(manifestation, "越权推理")
+
+
+def infer_evidence_layout(gene: Dict[str, Any]) -> str:
+    existing = gene.get("evidence_layout")
+    if isinstance(existing, str) and existing in TRAP_EVIDENCE_LAYOUTS:
+        return existing
+    if gene.get("failure_mechanism") == "cross_source_conflation":
+        return "cross_doc"
+    support_gap = str(gene.get("support_gap_type", ""))
+    if "+" in support_gap:
+        return "multi_span_same_doc"
+    return "single_span"
+
+
+def infer_pressure_pattern(gene: Dict[str, Any]) -> str:
+    existing = gene.get("pressure_pattern")
+    if isinstance(existing, str) and existing in TRAP_PRESSURE_PATTERNS:
+        return existing
+    carrier = str(gene.get("answer_carrier", "")).strip()
+    if carrier == "numeric":
+        return "forced_precision"
+    if carrier == "boolean":
+        return "forced_binary"
+    if carrier == "citation_set":
+        return "forced_citation"
+    return "forced_completeness"
+
+
+def infer_distractor_style(gene: Dict[str, Any]) -> str:
+    existing = gene.get("distractor_style")
+    if isinstance(existing, str) and existing in TRAP_DISTRACTOR_STYLES:
+        return existing
+    mechanism = str(gene.get("failure_mechanism", "")).strip()
+    if mechanism == "background_as_direct_evidence":
+        return "background_dense"
+    if mechanism == "temporal_scope_violation":
+        return "temporal_shift"
+    if mechanism == "cross_source_conflation":
+        return "entity_alias_confusion"
+    return "near_miss"
+
+
+def infer_boundary_scope(gene: Dict[str, Any]) -> str:
+    existing = gene.get("boundary_scope")
+    if isinstance(existing, str) and existing in TRAP_BOUNDARY_SCOPES:
+        return existing
+    mechanism = str(gene.get("failure_mechanism", "")).strip()
+    support_gap = str(gene.get("support_gap_type", ""))
+    carrier = str(gene.get("answer_carrier", "")).strip()
+    if mechanism == "temporal_scope_violation":
+        return "time"
+    if carrier == "citation_set":
+        return "citation_origin"
+    if carrier == "numeric" or "missing_key_variable" in support_gap:
+        return "numeric_formula"
+    if carrier == "entity_set":
+        return "entity"
+    return "condition"
+
+
+def normalize_difficulty(gene: Dict[str, Any]) -> Dict[str, Any]:
+    existing = gene.get("difficulty")
+    knob_tags = gene.get("difficulty_knobs")
+    if not isinstance(knob_tags, list):
+        knob_tags = []
+
+    evidence_layout = infer_evidence_layout(gene)
+    pressure_pattern = infer_pressure_pattern(gene)
+    distractor_style = infer_distractor_style(gene)
+    boundary_scope = infer_boundary_scope(gene)
+
+    defaults = {
+        "gap_concealment": 4 if gene.get("failure_mechanism") in {
+            "background_as_direct_evidence",
+            "temporal_scope_violation",
+            "cross_source_conflation",
+            "implicit_condition_drop",
+        } else 3,
+        "distractor_density": 2 if distractor_style in {"background_dense", "temporal_shift", "entity_alias_confusion"} else 1,
+        "composition_depth": 3 if evidence_layout == "cross_doc" else 2 if evidence_layout == "multi_span_same_doc" else 1,
+        "pressure_intensity": 3 if pressure_pattern in {"forced_precision", "forced_citation"} else 2 if pressure_pattern in {"forced_binary", "forced_completeness"} else 1,
+        "verification_complexity": 3 if evidence_layout == "cross_doc" or boundary_scope == "citation_origin" else 2 if boundary_scope in {"time", "condition", "numeric_formula", "entity"} else 1,
+    }
+
+    source = existing if isinstance(existing, dict) else {}
+    source_knob_tags = source.get("knob_tags")
+    if not isinstance(source_knob_tags, list):
+        source_knob_tags = knob_tags
+    normalized = {
+        key: _clamp_int(source.get(key), cfg["min"], cfg["max"], defaults[key])
+        for key, cfg in DIFFICULTY_DIMENSIONS.items()
+    }
+    normalized["knob_tags"] = [str(tag) for tag in (source_knob_tags or []) if str(tag).strip()]
+    normalized["score"] = difficulty_score(normalized)
+    normalized["bucket"] = difficulty_bucket(normalized["score"])
+    return normalized
+
+
+def upgrade_gene_schema(gene: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    将旧版 gene 升级到 trap schema v2。
+    该函数只补齐结构字段，不改变评测指标字段。
+    """
+    upgraded = dict(gene)
+    upgraded["manifestation_hint"] = infer_manifestation_hint(upgraded)
+    upgraded["target_error_type"] = infer_target_error_type(upgraded)
+    upgraded["evidence_layout"] = infer_evidence_layout(upgraded)
+    upgraded["pressure_pattern"] = infer_pressure_pattern(upgraded)
+    upgraded["distractor_style"] = infer_distractor_style(upgraded)
+    upgraded["boundary_scope"] = infer_boundary_scope(upgraded)
+    upgraded["difficulty"] = normalize_difficulty(upgraded)
+    upgraded["difficulty_knobs"] = list(upgraded["difficulty"].get("knob_tags", []))
+    upgraded["gene_schema_version"] = GENE_SCHEMA_VERSION
+    return upgraded
 
 
 # ─────────────────────────────────────────────
@@ -279,34 +545,77 @@ class RoundManifest:
 
 def validate_gene_schema(gene: Dict[str, Any]) -> List[str]:
     """
-    验证 gene 是否符合 v1 schema。
+    验证 gene 是否符合 trap schema v2。
     返回违规列表（空列表 = 合法）。
     """
     errors: List[str] = []
+    normalized_gene = upgrade_gene_schema(gene)
 
     # 必须字段检查
     for f in GENE_REQUIRED_FIELDS:
-        if f not in gene or gene[f] is None or gene[f] == "":
+        if f not in normalized_gene or normalized_gene[f] is None or normalized_gene[f] == "":
             errors.append(f"缺少必须字段: {f}")
 
     # failure_mechanism 合法性
-    fm = gene.get("failure_mechanism", "")
+    fm = normalized_gene.get("failure_mechanism", "")
     if fm and fm not in FAILURE_MECHANISMS:
         errors.append(f"非法 failure_mechanism: {fm}，合法值: {list(FAILURE_MECHANISMS.keys())}")
 
+    manifestation = normalized_gene.get("manifestation_hint", "")
+    if manifestation and manifestation not in FAILURE_MANIFESTATIONS:
+        errors.append(
+            f"非法 manifestation_hint: {manifestation}，合法值: {list(FAILURE_MANIFESTATIONS.keys())}"
+        )
+
+    if fm and manifestation and (fm, manifestation) not in VALID_MECHANISM_MANIFESTATION_PAIRS:
+        errors.append(
+            f"非法组合 ({fm}, {manifestation})，不在 VALID_MECHANISM_MANIFESTATION_PAIRS 中"
+        )
+
     # target_error_type 合法性
-    et = gene.get("target_error_type", "")
+    et = normalized_gene.get("target_error_type", "")
     if et and et not in TARGET_ERROR_TYPES:
         errors.append(f"非法 target_error_type: {et}，合法值: {list(TARGET_ERROR_TYPES.keys())}")
 
-    # (mechanism, error_type) 组合合法性
-    if fm and et and (fm, et) not in VALID_MECHANISM_ERROR_PAIRS:
-        errors.append(f"非法组合 ({fm}, {et})，不在 VALID_MECHANISM_ERROR_PAIRS 中")
-
     # answer_carrier 合法性
-    ac = gene.get("answer_carrier", "")
+    ac = normalized_gene.get("answer_carrier", "")
     if ac and ac not in CARRIER_RULES:
         errors.append(f"非法 answer_carrier: {ac}，合法值: {list(CARRIER_RULES.keys())}")
+
+    if normalized_gene.get("evidence_layout") not in TRAP_EVIDENCE_LAYOUTS:
+        errors.append(
+            f"非法 evidence_layout: {normalized_gene.get('evidence_layout')}，"
+            f"合法值: {list(TRAP_EVIDENCE_LAYOUTS.keys())}"
+        )
+    if normalized_gene.get("pressure_pattern") not in TRAP_PRESSURE_PATTERNS:
+        errors.append(
+            f"非法 pressure_pattern: {normalized_gene.get('pressure_pattern')}，"
+            f"合法值: {list(TRAP_PRESSURE_PATTERNS.keys())}"
+        )
+    if normalized_gene.get("distractor_style") not in TRAP_DISTRACTOR_STYLES:
+        errors.append(
+            f"非法 distractor_style: {normalized_gene.get('distractor_style')}，"
+            f"合法值: {list(TRAP_DISTRACTOR_STYLES.keys())}"
+        )
+    if normalized_gene.get("boundary_scope") not in TRAP_BOUNDARY_SCOPES:
+        errors.append(
+            f"非法 boundary_scope: {normalized_gene.get('boundary_scope')}，"
+            f"合法值: {list(TRAP_BOUNDARY_SCOPES.keys())}"
+        )
+
+    difficulty = normalized_gene.get("difficulty", {})
+    if not isinstance(difficulty, dict):
+        errors.append("difficulty 必须是对象")
+    else:
+        for key, cfg in DIFFICULTY_DIMENSIONS.items():
+            value = difficulty.get(key)
+            if not isinstance(value, int):
+                errors.append(f"difficulty.{key} 必须是整数")
+                continue
+            if value < cfg["min"] or value > cfg["max"]:
+                errors.append(
+                    f"difficulty.{key}={value} 超出范围 [{cfg['min']}, {cfg['max']}]"
+                )
 
     return errors
 

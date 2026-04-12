@@ -3,7 +3,7 @@ Factories to derive TaskSpec / VerifierSpec / TrajectorySpec from benchmark item
 
 GRIT 直接路径（无需完整 benchmark_item 格式）
 ----------------------------------------------
-当你拥有 GRIT 的 eval_result 记录（来自 evaluate_hard_hallucination_candidates.py 输出）
+当你拥有 GRIT 的 eval_result 记录（来自 pipelines.eval.evaluate_hard_hallucination_candidates 输出）
 而不想走完整的 benchmark_item pipeline 时，可以使用：
 
     from core.spec_factory import grit_eval_result_to_verifier_spec
@@ -174,7 +174,7 @@ def grit_eval_result_to_verifier_spec(
     gene: Optional[Dict[str, object]] = None,
 ) -> VerifierSpec:
     """
-    直接从 GRIT evaluate_hard_hallucination_candidates.py 的单条输出记录
+    直接从 GRIT pipelines.eval.evaluate_hard_hallucination_candidates 的单条输出记录
     构建 VerifierSpec，无需走完整的 benchmark_item 转换路径。
 
     success_criteria 与 evaluate 脚本的 classify_answer() + CARRIER_RULES 保持一致，

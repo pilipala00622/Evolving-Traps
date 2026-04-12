@@ -9,17 +9,35 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from llm import LLM
+from core.round_manager import (
+    CARRIER_RULES,
+    DIFFICULTY_DIMENSIONS,
+    FAILURE_MANIFESTATIONS,
+    FAILURE_MECHANISMS,
+    TARGET_ERROR_TYPES,
+    TRAP_BOUNDARY_SCOPES,
+    TRAP_DISTRACTOR_STYLES,
+    TRAP_EVIDENCE_LAYOUTS,
+    TRAP_PRESSURE_PATTERNS,
+    upgrade_gene_schema,
+)
 
 
 GENE_FIELDS = [
     "seed_id",
     "task_frame",
     "failure_mechanism",
+    "manifestation_hint",
     "trigger_form",
     "support_gap_type",
     "target_error_type",
     "answer_carrier",
+    "evidence_layout",
+    "pressure_pattern",
+    "distractor_style",
+    "boundary_scope",
     "abstention_expected",
+    "difficulty",
     "difficulty_knobs",
     "verifier_shape",
     "mutation_axes",
@@ -55,6 +73,7 @@ def build_prompt(seed: Dict[str, Any]) -> str:
         "target_error_type": seed.get("target_error_type"),
         "answer_carrier": seed.get("answer_carrier"),
         "abstention_expected": seed.get("abstention_expected"),
+        "difficulty": seed.get("difficulty"),
         "difficulty_knobs": seed.get("difficulty_knobs", []),
         "why_likely_to_fail": seed.get("why_likely_to_fail"),
     }
@@ -66,24 +85,49 @@ def build_prompt(seed: Dict[str, Any]) -> str:
 {json.dumps(GENE_FIELDS, ensure_ascii=False)}
 3. 所有字段都要尽量简洁、可复用，不要复述整条原题。
 4. `difficulty_knobs` 和 `mutation_axes` 必须是字符串数组。
+5. `difficulty` 必须是 JSON object，包含：
+   - `gap_concealment`
+   - `distractor_density`
+   - `composition_depth`
+   - `pressure_intensity`
+   - `verification_complexity`
+   - `knob_tags`
 5. `task_frame` 只从这些值中选择一个：
    - boundary_judgment
    - constrained_extraction
    - constrained_reasoning
    - citation_localization
-6. `support_gap_type` 只从这些值中选择一个或两个最主要的，若两个就用 `+` 连接：
+6. `failure_mechanism` 只从这些值中选择一个：
+{json.dumps(list(FAILURE_MECHANISMS.keys()), ensure_ascii=False)}
+7. `manifestation_hint` 只从这些值中选择一个：
+{json.dumps(list(FAILURE_MANIFESTATIONS.keys()), ensure_ascii=False)}
+8. `target_error_type` 只从这些值中选择一个，作为兼容层标签：
+{json.dumps(list(TARGET_ERROR_TYPES.keys()), ensure_ascii=False)}
+9. `answer_carrier` 只从这些值中选择一个：
+{json.dumps(list(CARRIER_RULES.keys()), ensure_ascii=False)}
+10. `support_gap_type` 只从这些值中选择一个或两个最主要的，若两个就用 `+` 连接：
    - missing_direct_evidence
    - missing_key_variable
    - background_not_decision
    - rule_to_case_gap
    - special_population_gap
    - incomplete_case_facts
-7. `verifier_shape` 只从这些值中选择一个：
+11. `evidence_layout` 只从这些值中选择一个：
+{json.dumps(list(TRAP_EVIDENCE_LAYOUTS.keys()), ensure_ascii=False)}
+12. `pressure_pattern` 只从这些值中选择一个：
+{json.dumps(list(TRAP_PRESSURE_PATTERNS.keys()), ensure_ascii=False)}
+13. `distractor_style` 只从这些值中选择一个：
+{json.dumps(list(TRAP_DISTRACTOR_STYLES.keys()), ensure_ascii=False)}
+14. `boundary_scope` 只从这些值中选择一个：
+{json.dumps(list(TRAP_BOUNDARY_SCOPES.keys()), ensure_ascii=False)}
+15. `difficulty` 各字段范围必须满足：
+{json.dumps(DIFFICULTY_DIMENSIONS, ensure_ascii=False)}
+16. `verifier_shape` 只从这些值中选择一个：
    - boolean_boundary_check
    - numeric_sufficiency_check
    - entity_overgeneration_check
    - citation_fabrication_check
-8. `trigger_form` 用短语描述问题触发形式，例如：
+17. `trigger_form` 用短语描述问题触发形式，例如：
    - yes_no_boundary_question
    - forced_numeric_estimation
    - case_rule_application
@@ -121,10 +165,11 @@ def normalize_gene(seed: Dict[str, Any], gene: Dict[str, Any], model_name: str, 
     rec["source_target_error_type"] = seed.get("target_error_type")
     rec["model_name"] = model_name
     rec["raw_response"] = raw_response
-    if not isinstance(rec.get("difficulty_knobs"), list):
-        rec["difficulty_knobs"] = []
+    rec = upgrade_gene_schema(rec)
     if not isinstance(rec.get("mutation_axes"), list):
         rec["mutation_axes"] = []
+    if not isinstance(rec.get("difficulty_knobs"), list):
+        rec["difficulty_knobs"] = []
     return rec
 
 

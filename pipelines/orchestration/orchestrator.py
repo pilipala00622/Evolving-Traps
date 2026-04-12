@@ -21,7 +21,7 @@ GRIT + HalluSEA 统一编排入口。
 用法::
 
     # 跑 Round 0（baseline_v0 模型，mock 模式验证流程）
-    python orchestrator.py run-round \
+    python -m pipelines.orchestration.orchestrator run-round \
         --round-id 0 \
         --model-version baseline_v0 \
         --seeds data/genes/seed_genes.jsonl \
@@ -31,7 +31,7 @@ GRIT + HalluSEA 统一编排入口。
         --mock
 
     # 跑 Round 1（训练后模型，真实推理）
-    python orchestrator.py run-round \
+    python -m pipelines.orchestration.orchestrator run-round \
         --round-id 1 \
         --model-version model_v1 \
         --archive runs/round_0/gene_archive_r0.jsonl \
@@ -40,15 +40,15 @@ GRIT + HalluSEA 统一编排入口。
         --output-dir runs/round_1
 
     # 比较两轮结果
-    python orchestrator.py compare-rounds \
+    python -m pipelines.orchestration.orchestrator compare-rounds \
         --round-a 0 --round-b 1 \
         --state-dir state/
 
     # 查看当前门控状态
-    python orchestrator.py gate-status --state-dir state/
+    python -m pipelines.orchestration.orchestrator gate-status --state-dir state/
 
     # 手动通过某个门控（人工确认后执行）
-    python orchestrator.py pass-gate \
+    python -m pipelines.orchestration.orchestrator pass-gate \
         --round-id 1 --gate gate_1_autolabel \
         --state-dir state/
 """
@@ -130,8 +130,6 @@ class GRITOrchestrator:
         Mock 模式：跳过实际 LLM 调用，用于流程验证。
     """
 
-    SCRIPT_DIR = Path(__file__).parent
-
     def __init__(self, state_dir: Path, mock: bool = False):
         self.state_dir = state_dir
         self.state_dir.mkdir(parents=True, exist_ok=True)
@@ -177,7 +175,7 @@ class GRITOrchestrator:
             if not self.manifest.is_gate_passed(round_id, "gate_0_seeds"):
                 self._wait_for_gate(round_id, "gate_0_seeds",
                     "请人工审核 seed 基因后运行:\n"
-                    f"  python orchestrator.py pass-gate "
+                    f"  python -m pipelines.orchestration.orchestrator pass-gate "
                     f"--round-id {round_id} --gate gate_0_seeds --state-dir {self.state_dir}")
                 return self._partial_result(round_id, model_version, output_dir)
 
@@ -210,7 +208,7 @@ class GRITOrchestrator:
             self._gate_1_prepare_spot_check(round_id, eval_results_path, output_dir)
             self._wait_for_gate(round_id, "gate_1_autolabel",
                 "请人工校验抽样文件后运行:\n"
-                f"  python orchestrator.py pass-gate "
+                f"  python -m pipelines.orchestration.orchestrator pass-gate "
                 f"--round-id {round_id} --gate gate_1_autolabel --state-dir {self.state_dir}")
             return self._partial_result(round_id, model_version, output_dir,
                                         eval_results_path=str(eval_results_path))
@@ -247,7 +245,7 @@ class GRITOrchestrator:
             pending_path = hallusea_dir / "pending_human_review.jsonl"
             if pending_path.exists():
                 print(f"\n[gate_2] 请人工确认 {pending_path} 中每条记录的 is_single_target_error 字段")
-                print(f"确认后运行:\n  python orchestrator.py pass-gate "
+                print(f"确认后运行:\n  python -m pipelines.orchestration.orchestrator pass-gate "
                       f"--round-id {round_id} --gate gate_2_type_confirm --state-dir {self.state_dir}")
             else:
                 # 没有待确认项目，自动通过
@@ -402,9 +400,8 @@ class GRITOrchestrator:
 
     def _expand_genes(self, genes_path: Path, output_dir: Path,
                       round_id: int, model_version: str) -> None:
-        script = self.SCRIPT_DIR / "expand_genes_to_candidates.py"
         cmd = [
-            sys.executable, str(script),
+            sys.executable, "-m", "pipelines.generation.expand_genes_to_candidates",
             "--genes", str(genes_path),
             "--output", str(output_dir),
         ]
@@ -415,9 +412,8 @@ class GRITOrchestrator:
 
     def _induce_from_contexts(self, contexts_path: Path, genes_path: Path,
                                output_path: Path) -> None:
-        script = self.SCRIPT_DIR / "induce_from_source_contexts.py"
         cmd = [
-            sys.executable, str(script),
+            sys.executable, "-m", "pipelines.generation.induce_from_source_contexts",
             "--contexts", str(contexts_path),
             "--genes", str(genes_path),
             "--output", str(output_path),
@@ -430,9 +426,8 @@ class GRITOrchestrator:
     def _evaluate(self, candidates_path: Path, models: List[str],
                   eval_dir: Path, round_id: int, model_version: str,
                   max_workers: int) -> None:
-        script = self.SCRIPT_DIR / "evaluate_hard_hallucination_candidates.py"
         cmd = [
-            sys.executable, str(script),
+            sys.executable, "-m", "pipelines.eval.evaluate_hard_hallucination_candidates",
             "--candidates", str(candidates_path),
             "--models", *models,
             "--output-dir", str(eval_dir),
@@ -451,7 +446,7 @@ class GRITOrchestrator:
         round_id: int, model_version: str,
     ) -> List[Dict]:
         # 直接调用 run_gene_evolution 中的函数，避免重复逻辑
-        from run_gene_evolution import build_gene_population
+        from pipelines.genes.run_gene_evolution import build_gene_population
         generation = round_id  # generation 与 round_id 保持一致
         return build_gene_population(genes, candidates, eval_results,
                                      generation, round_id, model_version)
@@ -472,12 +467,12 @@ class GRITOrchestrator:
 
     def _run_mutation(self, population: List[Dict], output_dir: Path,
                       round_id: int, model_version: str) -> None:
-        script = self.SCRIPT_DIR / "run_gene_evolution.py"
         population_path = output_dir / "population.jsonl"
         mutated_path = output_dir / "mutated_genes.jsonl"
         cmd = [
-            sys.executable, str(script),
-            "--genes", str(population_path),
+            sys.executable, "-m", "pipelines.genes.run_gene_evolution",
+            "mutate",
+            "--population", str(population_path),
             "--output", str(mutated_path),
             "--round-id", str(round_id),
             "--model-version", model_version,

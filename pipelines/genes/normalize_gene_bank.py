@@ -6,6 +6,18 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List
 
+from core.round_manager import (
+    FAILURE_MANIFESTATIONS,
+    FAILURE_MECHANISMS,
+    LEGACY_TARGET_ERROR_TO_MANIFESTATION,
+    TARGET_ERROR_TYPES,
+    TRAP_BOUNDARY_SCOPES,
+    TRAP_DISTRACTOR_STYLES,
+    TRAP_EVIDENCE_LAYOUTS,
+    TRAP_PRESSURE_PATTERNS,
+    upgrade_gene_schema,
+)
+
 
 FAILURE_MECHANISM_MAP = {
     "general_to_special_population_extrapolation_under_weak_evidence": "weak_evidence_to_strong_conclusion",
@@ -26,8 +38,16 @@ def normalize_target_error_type(value: Any, source_target_error_type: Any) -> An
         "unsupported_case_qualification": "生成错误",
         "边界误判错误": "越权推理",
         "generation_error": "生成错误",
+        "wrong_attribution": "错误匹配",
+        "scope_error": "限定错误",
+        "certainty_inflation": "确定性膨胀",
+        "compositional_error": "错误拼接",
         "越权推理": "越权推理",
         "无中生有": "无中生有",
+        "错误匹配": "错误匹配",
+        "限定错误": "限定错误",
+        "确定性膨胀": "确定性膨胀",
+        "错误拼接": "错误拼接",
         "生成错误": "生成错误",
     }
     if normalized in mapping:
@@ -36,6 +56,14 @@ def normalize_target_error_type(value: Any, source_target_error_type: Any) -> An
         return "越权推理"
     if "无中生有" in raw or "编造" in raw:
         return "无中生有"
+    if "错误匹配" in raw or "错配" in raw or "归因错误" in raw:
+        return "错误匹配"
+    if "限定错误" in raw or "范围错误" in raw:
+        return "限定错误"
+    if "确定性膨胀" in raw or "确定化" in raw:
+        return "确定性膨胀"
+    if "错误拼接" in raw or "拼接错误" in raw:
+        return "错误拼接"
     if "生成错误" in raw or "错误生成" in raw:
         return "生成错误"
     return source_target_error_type or value
@@ -50,6 +78,8 @@ def normalize_failure_mechanism(value: Any, mechanism_hint: Any) -> Any:
         return "missing_info_hard_answer"
     if mechanism_hint == "背景证据当直接证据":
         return "background_as_direct_evidence"
+    if isinstance(value, str) and value in FAILURE_MECHANISMS:
+        return value
     return value
 
 
@@ -57,6 +87,38 @@ def normalize_support_gap_type(value: Any) -> Any:
     if not isinstance(value, str):
         return value
     return value.replace(" ", "")
+
+
+def normalize_manifestation_hint(value: Any, target_error_type: Any) -> Any:
+    if isinstance(value, str) and value in FAILURE_MANIFESTATIONS:
+        return value
+    if isinstance(value, str):
+        lowered = value.strip().lower()
+        mapping = {
+            "unsupported_claim": "unsupported_claim",
+            "fabricated_fact": "fabricated_fact",
+            "wrong_attribution": "wrong_attribution",
+            "scope_error": "scope_error",
+            "certainty_inflation": "certainty_inflation",
+            "compositional_error": "compositional_error",
+        }
+        if lowered in mapping:
+            return mapping[lowered]
+    if isinstance(target_error_type, str) and target_error_type in LEGACY_TARGET_ERROR_TO_MANIFESTATION:
+        return LEGACY_TARGET_ERROR_TO_MANIFESTATION[target_error_type]
+    return value
+
+
+def _normalize_enum(value: Any, candidates: Dict[str, str], fallback: Any) -> Any:
+    if not isinstance(value, str):
+        return fallback
+    if value in candidates:
+        return value
+    lowered = value.strip().lower()
+    for key in candidates:
+        if key == lowered or key.lower() == lowered:
+            return key
+    return fallback
 
 
 def normalize_answer_carrier(value: Any, source_answer_carrier: Any) -> Any:
@@ -84,8 +146,23 @@ def normalize_record(rec: Dict[str, Any]) -> Dict[str, Any]:
     )
     out["failure_mechanism"] = normalize_failure_mechanism(out.get("failure_mechanism"), out.get("mechanism"))
     out["support_gap_type"] = normalize_support_gap_type(out.get("support_gap_type"))
+    out["manifestation_hint"] = normalize_manifestation_hint(
+        out.get("manifestation_hint"), out.get("target_error_type")
+    )
     out["answer_carrier"] = normalize_answer_carrier(out.get("answer_carrier"), out.get("source_answer_carrier"))
-    return out
+    out["evidence_layout"] = _normalize_enum(
+        out.get("evidence_layout"), TRAP_EVIDENCE_LAYOUTS, out.get("evidence_layout")
+    )
+    out["pressure_pattern"] = _normalize_enum(
+        out.get("pressure_pattern"), TRAP_PRESSURE_PATTERNS, out.get("pressure_pattern")
+    )
+    out["distractor_style"] = _normalize_enum(
+        out.get("distractor_style"), TRAP_DISTRACTOR_STYLES, out.get("distractor_style")
+    )
+    out["boundary_scope"] = _normalize_enum(
+        out.get("boundary_scope"), TRAP_BOUNDARY_SCOPES, out.get("boundary_scope")
+    )
+    return upgrade_gene_schema(out)
 
 
 def read_jsonl(path: Path) -> List[Dict[str, Any]]:

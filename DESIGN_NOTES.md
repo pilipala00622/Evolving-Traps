@@ -1,5 +1,7 @@
 # GRIT + HalluSEA 设计扩展笔记
 
+> 注意：本文件保留了部分历史根目录脚本路径示例。当前可执行入口请以 `README.md` 中的 `python -m pipelines...` 结构为准。
+
 > 对应四个问题：(1) Trap 多样性扩展 (2) Difficulty 定义 (3) GRPO 训练对接 (4) 全流程 Pipeline
 
 ---

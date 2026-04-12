@@ -18,6 +18,7 @@ from core.round_manager import (
     SIS_THRESHOLD,
     TRIVIALITY_PENALTY_FACTOR,
     TRIVIALITY_SIMILARITY_THRESHOLD,
+    upgrade_gene_schema,
     validate_gene_batch,
 )
 
@@ -82,6 +83,7 @@ def build_gene_population(
 
     population = []
     for gene in genes:
+        gene = upgrade_gene_schema(gene)
         gene_id = gene.get("gene_id") or f"gene_{generation}_{gene['seed_id']}_{slug(gene.get('failure_mechanism',''))}"
         cards = candidate_map.get(gene_id, []) or candidate_map.get(gene["seed_id"], [])
         evals = eval_map.get(gene_id, []) or eval_map.get(gene["seed_id"], [])
@@ -200,14 +202,22 @@ def _build_round_context(parent: Dict[str, Any], round_id: int, model_version: s
 
 def build_mutation_prompt(parent: Dict[str, Any], elite: Dict[str, Any] | None, profile: str = "general",
                           round_id: int = 0, model_version: str = "baseline_v0") -> str:
+    parent = upgrade_gene_schema(parent)
+    elite = upgrade_gene_schema(elite) if elite else None
     prompt_payload = {
         "parent_gene": {
             "gene_id": parent["gene_id"],
             "failure_mechanism": parent.get("failure_mechanism"),
+            "manifestation_hint": parent.get("manifestation_hint"),
             "trigger_form": parent.get("trigger_form"),
             "support_gap_type": parent.get("support_gap_type"),
             "target_error_type": parent.get("target_error_type"),
             "answer_carrier": parent.get("answer_carrier"),
+            "evidence_layout": parent.get("evidence_layout"),
+            "pressure_pattern": parent.get("pressure_pattern"),
+            "distractor_style": parent.get("distractor_style"),
+            "boundary_scope": parent.get("boundary_scope"),
+            "difficulty": parent.get("difficulty", {}),
             "difficulty_knobs": parent.get("difficulty_knobs", []),
             "verifier_shape": parent.get("verifier_shape"),
             "metrics": parent.get("metrics", {}),
@@ -219,10 +229,16 @@ def build_mutation_prompt(parent: Dict[str, Any], elite: Dict[str, Any] | None, 
         prompt_payload["elite_reference"] = {
             "gene_id": elite["gene_id"],
             "failure_mechanism": elite.get("failure_mechanism"),
+            "manifestation_hint": elite.get("manifestation_hint"),
             "trigger_form": elite.get("trigger_form"),
             "support_gap_type": elite.get("support_gap_type"),
             "target_error_type": elite.get("target_error_type"),
             "answer_carrier": elite.get("answer_carrier"),
+            "evidence_layout": elite.get("evidence_layout"),
+            "pressure_pattern": elite.get("pressure_pattern"),
+            "distractor_style": elite.get("distractor_style"),
+            "boundary_scope": elite.get("boundary_scope"),
+            "difficulty": elite.get("difficulty", {}),
             "difficulty_knobs": elite.get("difficulty_knobs", []),
             "metrics": elite.get("metrics", {}),
         }
@@ -233,14 +249,15 @@ def build_mutation_prompt(parent: Dict[str, Any], elite: Dict[str, Any] | None, 
 额外要求（numeric_fabrication 专项）：
 1. child gene 必须保持 `answer_carrier = numeric`
 2. child gene 必须保持 `target_error_type = 无中生有`
-3. 优先制造“看起来可以精确计算，但实际上缺关键数值口径/隐藏系数/专属规则”的场景
-4. 优先加入：
+3. child gene 必须保持 `manifestation_hint = fabricated_fact`
+4. 优先制造“看起来可以精确计算，但实际上缺关键数值口径/隐藏系数/专属规则”的场景
+5. 优先加入：
    - 单位与时间口径干扰
    - 相关但不充分的可比数值
    - 被包装成直接证据的行业/背景基准
    - ‘保留两位小数/给出精确值’的回答压力
-5. 正确行为应是：明确说明文档不足以支持精确数值，拒绝拍脑袋估算
-6. 不要把任务退化成 boolean 判断或集合抽取
+6. 正确行为应是：明确说明文档不足以支持精确数值，拒绝拍脑袋估算
+7. 不要把任务退化成 boolean 判断或集合抽取
 """
 
     round_context = _build_round_context(parent, round_id, model_version)
@@ -257,10 +274,16 @@ def build_mutation_prompt(parent: Dict[str, Any], elite: Dict[str, Any] | None, 
 输出要求：
 只输出一个 JSON object，必须包含：
 - failure_mechanism
+- manifestation_hint
 - trigger_form
 - support_gap_type
 - target_error_type
 - answer_carrier
+- evidence_layout
+- pressure_pattern
+- distractor_style
+- boundary_scope
+- difficulty
 - abstention_expected
 - difficulty_knobs
 - verifier_shape
@@ -271,6 +294,9 @@ def build_mutation_prompt(parent: Dict[str, Any], elite: Dict[str, Any] | None, 
 - child gene 仍然必须属于 hard hallucination 主线
 - 优先增加“边界更细、背景更像直接证据、缺口更隐蔽”的难度
 - 如果 parent 已经太接近 source_query，要换触发形式或缺口类型
+- 优先只改动 1 到 2 个 trap 结构轴（`trigger_form`、`evidence_layout`、`pressure_pattern`、
+  `distractor_style`、`boundary_scope`、`difficulty`），不要把所有字段同时重写
+- 如果修改了 `manifestation_hint`，必须同时说明为什么 target_error_type 仍然一致或为何需要升级兼容标签
 
 输入：
 {json.dumps(prompt_payload, ensure_ascii=False, indent=2)}
@@ -279,11 +305,13 @@ def build_mutation_prompt(parent: Dict[str, Any], elite: Dict[str, Any] | None, 
 
 def mutate_gene(parent: Dict[str, Any], elite: Dict[str, Any] | None, model_name: str,
                 profile: str = "general", round_id: int = 0, model_version: str = "baseline_v0") -> Dict[str, Any]:
+    parent = upgrade_gene_schema(parent)
+    elite = upgrade_gene_schema(elite) if elite else None
     llm = LLM(model_name)
     response = llm.get_model_answer(build_mutation_prompt(parent, elite, profile=profile,
                                                           round_id=round_id, model_version=model_version))
     payload = extract_json_object(response)
-    child = {
+    child = upgrade_gene_schema({
         **parent,
         **payload,
         "gene_id": f"gene_{parent['generation'] + 1}_{slug(parent['gene_id'] + response)}",
@@ -294,7 +322,7 @@ def mutate_gene(parent: Dict[str, Any], elite: Dict[str, Any] | None, model_name
         "parent_gene_ids": [parent["gene_id"]] + ([elite["gene_id"]] if elite else []),
         "fitness_history": list(parent.get("fitness_history") or []),
         "raw_mutation_response": response,
-    }
+    })
     return child
 
 

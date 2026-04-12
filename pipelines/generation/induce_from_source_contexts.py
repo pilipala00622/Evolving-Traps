@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from llm import LLM
+from core.round_manager import upgrade_gene_schema
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
@@ -49,6 +50,7 @@ def extract_json_payload(text: str) -> Any:
 
 
 def build_prompt(manifest: dict[str, Any], context_record: dict[str, Any], variants: int, max_context_chars: int) -> str:
+    manifest = upgrade_gene_schema(manifest)
     context_text = context_record["context_text"]
     if len(context_text) > max_context_chars:
         context_text = context_text[:max_context_chars]
@@ -58,10 +60,16 @@ def build_prompt(manifest: dict[str, Any], context_record: dict[str, Any], varia
         "seed_id": manifest["seed_id"],
         "knowledge_base_category": manifest["knowledge_base_category"],
         "target_error_type": manifest["target_error_type"],
+        "manifestation_hint": manifest.get("manifestation_hint"),
         "answer_carrier": manifest["answer_carrier"],
         "task_frame": manifest["task_frame"],
         "failure_mechanism": manifest["failure_mechanism"],
         "support_gap_type": manifest["support_gap_type"],
+        "evidence_layout": manifest.get("evidence_layout"),
+        "pressure_pattern": manifest.get("pressure_pattern"),
+        "distractor_style": manifest.get("distractor_style"),
+        "boundary_scope": manifest.get("boundary_scope"),
+        "difficulty": manifest.get("difficulty", {}),
         "verifier_shape": manifest["verifier_shape"],
         "seed_pattern_name": manifest["seed_pattern_name"],
         "seed_source_query": manifest["seed_source_query"],
@@ -75,6 +83,7 @@ def build_prompt(manifest: dict[str, Any], context_record: dict[str, Any], varia
 2. 如果当前 context 与 gene 机制不兼容，直接输出空数组 `[]`。
 3. 每个候选题必须保留 gene 的：
    - `target_error_type`
+   - `manifestation_hint`
    - `answer_carrier`
    - `failure_mechanism`
 4. 候选题必须基于当前 context 的事实边界重写，不能复述旧 seed query。
@@ -83,10 +92,16 @@ def build_prompt(manifest: dict[str, Any], context_record: dict[str, Any], varia
    - variant_id
    - query
    - intended_failure_mechanism
+   - manifestation_hint
    - target_error_type
    - answer_carrier
    - expected_good_behavior
    - verifier_hint
+   - evidence_layout
+   - pressure_pattern
+   - distractor_style
+   - boundary_scope
+   - design_difficulty
    - difficulty_knob_used
 
 gene：
@@ -106,6 +121,7 @@ gene：
 
 
 def normalize_candidate(manifest: dict[str, Any], card: dict[str, Any], model_name: str) -> dict[str, Any]:
+    manifest = upgrade_gene_schema(manifest)
     variant_id = card.get("variant_id", "var_001")
     return {
         "candidate_id": f"{manifest['seed_id']}__{manifest['gene_id'].split('_')[-1]}__{manifest['source_trace_id']}__{variant_id}",
@@ -118,11 +134,17 @@ def normalize_candidate(manifest: dict[str, Any], card: dict[str, Any], model_na
         "source_question_text": manifest.get("source_question_text"),
         "query": card.get("query"),
         "intended_failure_mechanism": card.get("intended_failure_mechanism"),
-        "target_error_type": card.get("target_error_type"),
-        "answer_carrier": card.get("answer_carrier"),
+        "manifestation_hint": card.get("manifestation_hint", manifest.get("manifestation_hint")),
+        "target_error_type": card.get("target_error_type", manifest.get("target_error_type")),
+        "answer_carrier": card.get("answer_carrier", manifest.get("answer_carrier")),
         "expected_good_behavior": card.get("expected_good_behavior"),
         "verifier_hint": card.get("verifier_hint"),
         "difficulty_knob_used": card.get("difficulty_knob_used"),
+        "evidence_layout": card.get("evidence_layout", manifest.get("evidence_layout")),
+        "pressure_pattern": card.get("pressure_pattern", manifest.get("pressure_pattern")),
+        "distractor_style": card.get("distractor_style", manifest.get("distractor_style")),
+        "boundary_scope": card.get("boundary_scope", manifest.get("boundary_scope")),
+        "difficulty": card.get("design_difficulty", manifest.get("difficulty")),
         "task_frame": manifest.get("task_frame"),
         "support_gap_type": manifest.get("support_gap_type"),
         "verifier_shape": manifest.get("verifier_shape"),

@@ -134,6 +134,9 @@ class HalluSEACurriculum:
         retained_solved = solved_genes_sorted[:retain_count]
 
         training_genes = eligible_genes + retained_solved
+        training_genes.sort(
+            key=lambda gene: gene.get("difficulty", {}).get("score", 0.5)
+        )
 
         # ── 4. 转换为 benchmark_item 格式 ───────────────────────
         benchmark_items = [

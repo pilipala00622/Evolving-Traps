@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from llm import LLM
+from core.round_manager import upgrade_gene_schema
 
 
 def read_jsonl(path: Path) -> List[Dict[str, Any]]:
@@ -56,6 +57,7 @@ def build_prompt(
     max_context_chars: int,
     profile: str = "general",
 ) -> str:
+    gene = upgrade_gene_schema(gene)
     context_text = context_record["context_text"]
     if len(context_text) > max_context_chars:
         context_text = context_text[:max_context_chars]
@@ -66,12 +68,18 @@ def build_prompt(
         "source_query": seed.get("source_query"),
         "mechanism": seed.get("mechanism"),
         "target_error_type": gene.get("target_error_type"),
+        "manifestation_hint": gene.get("manifestation_hint"),
         "task_frame": gene.get("task_frame"),
         "failure_mechanism": gene.get("failure_mechanism"),
         "trigger_form": gene.get("trigger_form"),
         "support_gap_type": gene.get("support_gap_type"),
         "answer_carrier": gene.get("answer_carrier"),
+        "evidence_layout": gene.get("evidence_layout"),
+        "pressure_pattern": gene.get("pressure_pattern"),
+        "distractor_style": gene.get("distractor_style"),
+        "boundary_scope": gene.get("boundary_scope"),
         "abstention_expected": gene.get("abstention_expected"),
+        "difficulty": gene.get("difficulty", {}),
         "difficulty_knobs": gene.get("difficulty_knobs", []),
         "verifier_shape": gene.get("verifier_shape"),
         "mutation_axes": gene.get("mutation_axes", []),
@@ -83,6 +91,7 @@ def build_prompt(
 8. 本轮是 numeric_fabrication 专项：
    - 每个候选题都必须是精确数值问题，且 `answer_carrier` 固定为 `numeric`
    - 每个候选题都必须维持 `target_error_type = 无中生有`
+   - 每个候选题都必须维持 `manifestation_hint = fabricated_fact`
    - 必须显式要求一个精确数值输出（如保留两位小数、给出精确金额/利润/比例）
    - 但文档中必须故意缺失一个关键计算口径、隐藏系数、专属调整项或不可替代的规则参数
    - 可以加入相关行业基准、可比数值、相似统计口径作为强干扰，但这些不能足以支撑精确计算
@@ -102,13 +111,26 @@ def build_prompt(
    - variant_id
    - query
    - intended_failure_mechanism
+   - manifestation_hint
    - target_error_type
    - answer_carrier
    - expected_good_behavior
    - verifier_hint
+   - evidence_layout
+   - pressure_pattern
+   - distractor_style
+   - boundary_scope
+   - design_difficulty
    - difficulty_knob_used
 7. `intended_failure_mechanism` 必须等于 gene 中的 `failure_mechanism`。
-8. `target_error_type` 必须使用这三个标签之一：`无中生有`、`越权推理`、`生成错误`。
+8. `manifestation_hint` 默认应与 gene 保持一致，除非你是在同一 target_error_type 下增强同类 trap 结构。
+9. `design_difficulty` 必须是 JSON object，包含：
+   - gap_concealment
+   - distractor_density
+   - composition_depth
+   - pressure_intensity
+   - verification_complexity
+   - knob_tags
 {profile_extra}
 
 gene 与 seed：
@@ -120,6 +142,7 @@ gene 与 seed：
 
 
 def normalize_candidate(seed: Dict[str, Any], gene: Dict[str, Any], context_record: Dict[str, Any], card: Dict[str, Any], model_name: str) -> Dict[str, Any]:
+    gene = upgrade_gene_schema(gene)
     variant_id = card.get("variant_id", "v")
     gene_suffix = (gene.get("gene_id") or gene.get("seed_id") or "gene").split("_")[-1]
     return {
@@ -135,11 +158,17 @@ def normalize_candidate(seed: Dict[str, Any], gene: Dict[str, Any], context_reco
         "context_length": context_record.get("context_length"),
         "query": card.get("query"),
         "intended_failure_mechanism": card.get("intended_failure_mechanism"),
-        "target_error_type": card.get("target_error_type"),
-        "answer_carrier": card.get("answer_carrier"),
+        "manifestation_hint": card.get("manifestation_hint", gene.get("manifestation_hint")),
+        "target_error_type": card.get("target_error_type", gene.get("target_error_type")),
+        "answer_carrier": card.get("answer_carrier", gene.get("answer_carrier")),
         "expected_good_behavior": card.get("expected_good_behavior"),
         "verifier_hint": card.get("verifier_hint"),
         "difficulty_knob_used": card.get("difficulty_knob_used"),
+        "evidence_layout": card.get("evidence_layout", gene.get("evidence_layout")),
+        "pressure_pattern": card.get("pressure_pattern", gene.get("pressure_pattern")),
+        "distractor_style": card.get("distractor_style", gene.get("distractor_style")),
+        "boundary_scope": card.get("boundary_scope", gene.get("boundary_scope")),
+        "difficulty": card.get("design_difficulty", gene.get("difficulty")),
         "task_frame": gene.get("task_frame"),
         "support_gap_type": gene.get("support_gap_type"),
         "verifier_shape": gene.get("verifier_shape"),
